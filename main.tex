@@ -11,14 +11,14 @@
 %% Titelseite angezeigt
 %% ========================================================================
 
-\newcommand{\mytitle}{TITLE} 
-\newcommand{\mysubtitle}{SUBTITITLE}
-\newcommand{\myinstitute}{Abteilung für Wirtschaftsingenieure/Betriebsinformatik} 
-\newcommand{\mysubmissionyear}{2022} %% Einreich - Jahr
-\newcommand{\mysubmissionmonth}{April} %% Monat der Einreichung
-\newcommand{\myauthor}{AUTOR1\\AUTOR2}  %% Autoren. Bitte mit \\ Trennen wenn mehrere
-\newcommand{\mysupervisor}{BETREUER1\\BETREUER2}  %%Betreuer. Bitte mit \\ Trennen wenn mehrere
-\newcommand{\myprojectpartner}{Vollständige Bezeichnung der Firma}  %% Partnerfirma
+\newcommand{\mytitle}{3D Object Tracking} 
+\newcommand{\mysubtitle}{Image-Based 3D Tracking with Multiple Stations}
+\newcommand{\myinstitute}{Department of Electronics and Computer Engineering} 
+\newcommand{\mysubmissionyear}{2025} %% Einreich - Jahr
+\newcommand{\mysubmissionmonth}{...} %% Monat der Einreichung
+\newcommand{\myauthor}{Prantl Niclas\\Krahbichler Lukas}  %% Autoren. Bitte mit \\ Trennen wenn mehrere
+\newcommand{\mysupervisor}{Götsch Leopold\\Egger Eva-Maria\\Jank Andreas}  %%Betreuer. Bitte mit \\ Trennen wenn mehrere
+\newcommand{\myprojectpartner}{None}  %% Partnerfirma
 
 \newcommand{\mysubject}{SUBJECT}  %% also used for PDF metadata (hyperref)
 \newcommand{\mykeywords}{KEYWORDS}  %% also used for PDF metadata (hyperref)
@@ -70,17 +70,14 @@
 
 %% override default language of babel: (be sure to know, what you're
 %% doing here)
-%\selectlanguage{american}
-\selectlanguage{ngerman}
+\selectlanguage{american}
+%\selectlanguage{ngerman}
 
 %% ========================================================================
 %% bibtex für die Literaturverwaltung: Hier wird der Zitier-Stil festgelegt
 %% ========================================================================
 \usepackage{natbib} 
 \bibliographystyle{agsm} 
-
-
-
 
 
 \input{template/pdf_settings}  %% should be *last* definitions in preamble!
@@ -97,11 +94,11 @@
 %% Choose your desired title page:
 \input{\mytitlepage}            %% include title page
 
-\input{template/lock_flag} % Wenn kein Sperrvermerk gemacht werden soll, dann diesen Import einfach auskommentieren
+%\input{template/lock_flag} % Wenn kein Sperrvermerk gemacht werden soll, dann diesen Import einfach auskommentieren
 
 %%\input{template/declaration_TU_Graz}  %% Statutory Declaration
 % \input{thanks}                %% this is a suggestion: you have to create this file on demand
-% \input{foreword}              %% this is a suggestion: you have to create this file on demand
+% \input{foreword}               %% this is a suggestion: you have to create this file on demand
 
 
 %% include the abstract without chapter number but include it on table of contents:
@@ -125,7 +122,10 @@
 
 
 %% HIER DIE EIGENEN KAPITEL EINFÜGEN
-\input{content/einleitung}  
+\input{content/einleitung} 
+ 
+\input{content/market_analysis} % Einfach auskommentieren für die tatsächliche Arbeit
+
 \input{content/latex_beispiele} % Einfach auskommentieren für die tatsächliche Arbeit
 
 \appendix                       %% closes main document, appendix follows until end; only available in book-classes
