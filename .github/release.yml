@@ -1,0 +1,22 @@
+changelog:
+  categories:
+    - title: Brand New Content ✨
+      labels:
+        - 'New Section'
+    - title: Enhanced & Updated 🛠
+      labels:
+        - 'Revisions'
+    - title: Polished & Precise ✍️
+      labels:
+        - 'Language & Style'
+        - 'Rephrasing'
+    - title: Verified & Validated ✅
+      labels:
+        - 'Content'
+        - 'Citations & Sources'
+    - title: Technically Sound ⚙️
+      labels:
+        - 'Technical Issue'
+    - title: Miscellaneous 🛠
+      labels:
+        - '*'

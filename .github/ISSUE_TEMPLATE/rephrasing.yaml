@@ -1,0 +1,23 @@
+name: Rephrasing
+description: Request rewrites for clarity or flow.
+title: ""
+labels: ["Rephrasing"]
+assignees:
+  - LukasKrah
+body:
+  - type: textarea
+    id: rephrasing-details
+    attributes:
+      label: Rephrasing Details
+      description: Specify the section(s) requiring rephrasing, explain why it's needed, and provide suggestions for clearer or more concise wording
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

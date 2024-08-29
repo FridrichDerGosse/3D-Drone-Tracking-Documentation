@@ -1,0 +1,23 @@
+name: New Section
+description: A completely new part of the document.
+title: ""
+labels: ["New Section"]
+assignees:
+  - LukasKrah
+body:
+  - type: textarea
+    id: new-section-details
+    attributes:
+      label: New Section Details
+      description: Provide a detailed description of the proposed new section, including its key points, rationale, and any relevant resources.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
