@@ -1,7 +1,7 @@
 name: Technical Bugs
 description: Report technical errors or inconsistencies
-title: "Technical Bugs: "
-labels: ["Technical Bugs"]
+title: "Technical Issue: "
+labels: ["Technical Issue"]
 assignees:
   - LukasKrah
 body:
