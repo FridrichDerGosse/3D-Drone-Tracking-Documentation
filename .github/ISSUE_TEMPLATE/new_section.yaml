@@ -1,6 +1,6 @@
 name: New Section
 description: A completely new part of the document.
-title: ""
+title: "New Section: "
 labels: ["New Section"]
 assignees:
   - LukasKrah

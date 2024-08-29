@@ -1,6 +1,6 @@
 name: Content
 description: Flag missing, incorrect or outdated information
-title: ""
+title: "Content: "
 labels: ["Content"]
 assignees:
   - LukasKrah

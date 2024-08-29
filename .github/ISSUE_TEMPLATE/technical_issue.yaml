@@ -1,6 +1,6 @@
 name: Technical Bugs
 description: Report technical errors or inconsistencies
-title: ""
+title: "Technical Bugs: "
 labels: ["Technical Bugs"]
 assignees:
   - LukasKrah

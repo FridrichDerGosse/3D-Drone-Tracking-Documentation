@@ -1,6 +1,6 @@
 name: Revisions
 description: Suggest changes or updates to an existing section.
-title: ""
+title: "Revisions: "
 labels: ["Revisions"]
 assignees:
   - LukasKrah
