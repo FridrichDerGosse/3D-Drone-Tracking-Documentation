@@ -1,0 +1,23 @@
+name: Citations & Sources
+description: Address citation or source-related issues
+title: ""
+labels: ["Citations & Sources"]
+assignees:
+  - LukasKrah
+body:
+  - type: textarea
+    id: citations-sources-details
+    attributes:
+      label: Citations & Sources Details
+      description: Specify the location(s) where citations or sources are needed or incorrect, and provide the correct citation or source information
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

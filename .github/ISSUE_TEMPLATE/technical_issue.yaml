@@ -1,0 +1,23 @@
+name: Technical Bugs
+description: Report technical errors or inconsistencies
+title: ""
+labels: ["Technical Bugs"]
+assignees:
+  - LukasKrah
+body:
+  - type: textarea
+    id: technical-bugs-details
+    attributes:
+      label: Technical Bugs Details
+      description: Specify the location(s) of the technical issue, provide a detailed description, steps to reproduce (if applicable), expected and actual behavior
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
