@@ -11,11 +11,11 @@
 %% Titelseite angezeigt
 %% ========================================================================
 
-\newcommand{\mytitle}{3D Object Tracking} 
-\newcommand{\mysubtitle}{Image-Based 3D Tracking with Multiple Stations}
+\newcommand{\mytitle}{3D Drone Tracking} 
+\newcommand{\mysubtitle}{Image-Driven 3D Drone Tracking employing Multiple Stations for Agricultural Use}
 \newcommand{\myinstitute}{Department of Electronics and Computer Engineering} 
 \newcommand{\mysubmissionyear}{2025} %% Einreich - Jahr
-\newcommand{\mysubmissionmonth}{...} %% Monat der Einreichung
+\newcommand{\mysubmissionmonth}{March} %% Monat der Einreichung
 \newcommand{\myauthor}{Prantl Niclas\\Krahbichler Lukas}  %% Autoren. Bitte mit \\ Trennen wenn mehrere
 \newcommand{\mysupervisor}{Götsch Leopold\\Egger Eva-Maria\\Jank Andreas}  %%Betreuer. Bitte mit \\ Trennen wenn mehrere
 \newcommand{\myprojectpartner}{None}  %% Partnerfirma
@@ -70,13 +70,13 @@
 
 %% override default language of babel: (be sure to know, what you're
 %% doing here)
-\selectlanguage{american}
+\selectlanguage{british}
 %\selectlanguage{ngerman}
 
 %% ========================================================================
 %% bibtex für die Literaturverwaltung: Hier wird der Zitier-Stil festgelegt
 %% ========================================================================
-\usepackage{natbib} 
+\usepackage[square,numbers]{natbib}
 \bibliographystyle{agsm} 
 
 
@@ -86,6 +86,9 @@
 %%%% begin{document}
 %% ========================================================================
 
+% Festlegen des grundlegenden Layouts (Ränder auch in cm angebbar)
+\usepackage[oneside, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
 \begin{document} 
 \frontmatter                    %% KOMA: roman page numbers and such; only available in scrbook
 
@@ -93,6 +96,10 @@
 
 %% Choose your desired title page:
 \input{\mytitlepage}            %% include title page
+
+% Jetzt schalten wir wieder zurück auf twopage
+\newgeometry{twoside, left=1in, right=1in, top=1in, bottom=1in, bindingoffset=0.5in}
+
 
 %\input{template/lock_flag} % Wenn kein Sperrvermerk gemacht werden soll, dann diesen Import einfach auskommentieren
 
@@ -122,11 +129,11 @@
 
 
 %% HIER DIE EIGENEN KAPITEL EINFÜGEN
-\input{content/einleitung} 
+\input{content/introduction} 
  
-\input{content/market_analysis} % Einfach auskommentieren für die tatsächliche Arbeit
+\input{content/market_analysis}
 
-\input{content/latex_beispiele} % Einfach auskommentieren für die tatsächliche Arbeit
+% \input{content/latex_beispiele} % Einfach auskommentieren für die tatsächliche Arbeit
 
 \appendix                       %% closes main document, appendix follows until end; only available in book-classes
 
