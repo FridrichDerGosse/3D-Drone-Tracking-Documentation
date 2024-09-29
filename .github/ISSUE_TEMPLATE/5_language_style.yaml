@@ -1,0 +1,23 @@
+name: Language & Style
+description: Address language, grammar, typos, or style issues.
+title: "Language & Style: "
+labels: ["Language & Style"]
+assignees:
+  - LukasKrah
+body:
+  - type: textarea
+    id: language-style-details
+    attributes:
+      label: Language & Style Details
+      description: Specify the location(s) of the issue(s), describe the language or style problem, and suggest a correction or improvement.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

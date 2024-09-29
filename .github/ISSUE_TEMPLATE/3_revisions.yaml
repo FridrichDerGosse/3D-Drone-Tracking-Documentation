@@ -1,0 +1,23 @@
+name: Revisions
+description: Suggest changes or updates to an existing section.
+title: "Revisions: "
+labels: ["Revisions"]
+assignees:
+  - LukasKrah
+body:
+  - type: textarea
+    id: revisions-details
+    attributes:
+      label: Revisions Details
+      description: Specify the section(s) to be revised and provide a detailed description of the proposed changes, along with the reasoning and any supporting evidence.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
