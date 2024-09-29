@@ -21,7 +21,6 @@ Drones are used in agriculture for a wide range of applications:
 
 The agricultural drone market is experiencing significant growth. Valued at \$0.88 billion in 2020, it is projected to reach \$5.89 billion by 2030, with a compound annual growth rate (CAGR) of 22.4\% \citep{alliedmarketresearch2021}. Key factors contributing to this growth include:
 
-% todo: maybe shorten this by not explaining the key factors in detail and just listing them?
 \begin{itemize} 
 	\item \textbf{Demand for Increased Food Production:} Global population growth drives the need for higher agricultural output, encouraging the adoption of efficient technologies like drones \citep{nazarov2023}. 
 	\item \textbf{Technological Advancements:} Improvements in drone capabilities, such as enhanced sensors and longer flight times, make them more practical for agricultural applications \citep{guardianagriculture}. 
@@ -34,28 +33,20 @@ While the potential is significant, the adoption of drones in agriculture faces 
 
 \begin{itemize} 
 	\item \textbf{Regulatory Barriers:} Strict government regulations on airspace and drone operations can hinder deployment \citep{nazarov2023}. 
-	\item \textbf{High Initial Costs:} The expense of acquiring and maintaining advanced drones may be prohibitive for small-scale farmers. % todo: source
+	\item \textbf{High Initial Costs:} The expense of acquiring and maintaining advanced drones may be prohibitive for small-scale farmers.
 	\item \textbf{Privacy and Safety Concerns:} The use of drones can raise privacy issues and pose safety risks to people and animals if not operated correctly \citep{petiole_drones_risks}. 
 \end{itemize}
 
-Opportunities to address these challenges include: % todo: think of this section as we don't really use these opportunities (only in theory)
-% maybe rewrite like we could use government support later and include privacy featuares in our drones. 
-% point with cost-efficiencly is good but doesn't fully align with the challenges listed above
-
-\begin{itemize} 
-	\item \textbf{Government Support:} Initiatives like Austria's "Smart Farming" action plan aim to integrate digital technologies into agriculture, providing funding and resources to farmers \citep{smartfarming2023}. 
-	\item \textbf{Technological Innovations:} Developing user-friendly and cost-effective drones can lower barriers to entry \citep{guardianagriculture}. % todo: weak source for this claim, maybe write without source
-	\item \textbf{Privacy and Safety Enhancements:} Implementing measures such as geofencing and privacy-by-design is vital for mitigating privacy and safety concerns. Geofencing restricts drones from flying in specific, predefined areas, such as residential neighborhoods or around sensitive infrastructure, helping to prevent unwanted intrusions and ensure responsible drone use. Privacy-by-design involves minimizing data collection, securing collected data, and ensuring transparency, which collectively enhance trust and compliance with privacy regulations \citep{secure_redact_drones_privacy}. 
-\end{itemize}
+Our solution addresses these challenges by offering cost-effective drone tracking systems that reduce initial costs by eliminating the need for expensive onboard navigation systems. By utilizing ground-based tracking, our drones can be simpler and more affordable, enhancing operational safety and accessibility for small-scale farmers. Moreover, we can leverage government support initiatives like Austria's "Smart Farming" action plan, which provides funding and resources to integrate digital technologies into agriculture \citep{smartfarming2023}. Additionally, implementing privacy and safety features such as geofencing and privacy-by-design principles ensures compliance with regulations and builds trust among users \citep{secure_redact_drones_privacy}.
 
 \section{Target Group Definition}
 
-Our ideal customers are small to medium-sized agricultural enterprises, individual farmers, and agricultural cooperatives who have limited budgets compared to large enterprises. They are seeking cost-effective solutions to modernize their farming operations with drone technology without the high expenses associated with advanced onboard systems. % todo: onboard systems not explained before!
+Our ideal customers are small to medium-sized agricultural enterprises, individual farmers, and agricultural cooperatives with limited budgets. They seek cost-effective solutions to modernize their farming operations with drone technology without the high expenses associated with advanced onboard systems.
 
 \textbf{Key Characteristics}
 
-\begin{itemize} % maybe rethink the term decision-makers
-	\item \textbf{Demographics}: Decision-makers aged 35--60 with practical experience in agriculture, often fitting the 'Pragmatic Traditionals' or 'Adaptive Pragmatic Middle' Sinus-Milieus \cite{sinus_institut_2024}. 
+\begin{itemize}
+	\item \textbf{Demographics}: Farmers and managers aged 35--60 with practical experience in agriculture, often fitting the 'Pragmatic Traditionals' or 'Adaptive Pragmatic Middle' Sinus-Milieus \cite{sinus_institut_2024}. 
 	\item \textbf{Geographics}: Located in rural agricultural regions such as Lower Austria, Styria, Upper Austria, and Tyrol. 
 	\item \textbf{Psychographics}: Value efficiency, sustainability, and are open to adopting new technologies that improve their farming practices. 
 	\item \textbf{Behavioral}: Make purchase decisions based on cost-benefit analysis, attend local agricultural events, rely on recommendations from peers and local networks. 
@@ -100,48 +91,43 @@ Our ideal customers are small to medium-sized agricultural enterprises, individu
 
 \section{Competitor Analysis}
 
-The agricultural drone market is increasingly competitive in Austria and globally, with key players offering advanced solutions for precision farming. This analysis focuses on three major competitors relevant to the Austrian market:
+The agricultural drone market in Austria and globally is highly competitive, with key players offering advanced precision farming solutions. This analysis focuses on three major competitors relevant to the Austrian market:
 
 \begin{enumerate} 
-	\item \textbf{Dronetech by Immotech (Austria):} An Austrian drone service provider, Dronetech has partnered with Huawei to develop 5G-enabled drone solutions for smart farming. They modify DJI drones, which already come equipped with \acrfull{gnss} and \acrfull{rtk} systems for positioning and cameras for obstacle avoidance from DJI, by adding custom \acrfull{3d}-printed parts to optimize them for specific agricultural needs \cite{dronetech_instagram, dji_m300}. The drones are further enhanced with additional high-resolution cameras and sensors, leveraging Huawei's cloud computing and AI for real-time data analysis. This setup allows for the precise application of water, fertilizers, and pesticides, significantly reducing waste and environmental impact. A key challenge they face is the current network coverage limitations for 5G-enabled drones \cite{huawei_dronetech_2022, huawei_boosting_farming_2022, dronetech_smart_farming_project}.
-
-	\item \textbf{DJI - Da-Jiang Innovations Science and Technology Co. (China:):} A global leader in drone technology, DJI Agriculture offers expensive high-tech drones such as the DJI Agras T50, T25, and Mavic 3M, designed for agricultural tasks like spraying, mapping, and crop monitoring. These drones utilize \acrshort{gnss} and \acrshort{rtk} for precise positioning, phased-array radar and vision sensors for obstacle avoidance, and Radio, WiFi, and Bluetooth for communication \cite{dji_ag_t25, dji_ag_t50}. They also offer accessories such as the DJI Relay to enhance communication in complex environments. In Austria, DJI's agricultural products are distributed through partners like Drohnenring, providing consultation, sales, training, and support services \cite{drohnenring_2024, dji_agriculture_2024}.
+	\item \textbf{Dronetech by Immotech (Austria):} Dronetech partners with Huawei to develop 5G-enabled smart farming drones. They modify DJI drones, already equipped with \acrfull{gnss}, \acrfull{rtk}, and obstacle avoidance cameras, adding custom \acrfull{3d}-printed parts to optimize them for agricultural needs \cite{dronetech_instagram, dji_m300}. Enhancements include high-resolution cameras and sensors, leveraging Huawei's cloud computing and AI for real-time data analysis. This enables precise application of water, fertilizers, and pesticides, reducing waste and environmental impact. A key challenge they face is limited 5G network coverage \cite{huawei_dronetech_2022, huawei_boosting_farming_2022, dronetech_smart_farming_project}.
 	
-	\item \textbf{AgEagle Aerial Systems Inc. (USA):} AgEagle specializes in agricultural mapping solutions, offering drones like the eBee X and multispectral sensors such as RedEdge-P and Altum-PT. These drones are equipped with \acrshort{gnss} and \acrshort{rtk} for precise positioning, delivering centimeter-level accuracy without the need for ground control points. Communication is ensured through radio links with a range of up to 3 km and secure encryption. For safe and efficient flight, the drones utilize Light Detection and Ranging (LiDAR) sensors for obstacle avoidance and controlled landings. Additionally, AgEagle supports their hardware with software tools like eMotion and Measure Ground Control for streamlined flight planning and data processing \cite{ageagle_agriculture_2024, ageagle_agriculture_ebee}.
+	\item \textbf{DJI - Da-Jiang Innovations Science and Technology Co. (China):} DJI, a global drone leader, offers expensive high-tech agricultural drones like Agras T50, T25, and Mavic 3M for tasks such as spraying, mapping, and crop monitoring. They use \acrshort{gnss} and \acrshort{rtk} for precise positioning, radar and vision sensors for obstacle avoidance, and Radio, WiFi, and Bluetooth for communication. Accessories like DJI Relay enhance their range in complex environments \cite{dji_ag_t25, dji_ag_t50}. In Austria, partners like Drohnenring distribute DJI's products, offering consultation, sales, training, and support \cite{drohnenring_2024}.
+	
+	\item \textbf{AgEagle Aerial Systems Inc. (USA):} AgEagle specializes in agricultural mapping drones like eBee X. Equipped with \acrshort{gnss} and \acrshort{rtk}, they achieve centimeter-level accuracy without ground control points. They communicate via radio links up to 3 km with secure encryption. LiDAR sensors provide obstacle avoidance and controlled landings. AgEagle offers software like eMotion and Measure Ground Control for flight planning and data processing \cite{ageagle_agriculture_2024, ageagle_agriculture_ebee}.
 \end{enumerate}
 
 \subsection{Competitive Landscape}
 
-The agricultural drone market in Austria features both local companies like Dronetech, leveraging partnerships with global tech firms to offer innovative solutions, and international players like DJI and AgEagle, providing advanced drone technology and comprehensive agricultural services. Competition centers on integrating cutting-edge technologies such as 5G connectivity, AI, \acrshort{gnss}/\acrshort{rtk} positioning, and multispectral imaging to enhance precision farming practices. Each competitor offers sophisticated communication systems, precise positioning capabilities, and advanced software solutions to meet the evolving needs of modern agriculture.
+The Austrian agricultural drone market includes local firms like Dronetech, partnering with global tech companies, and international players like DJI and AgEagle, offering advanced drone technology and services. Competition centers on integrating cutting-edge technologies like 5G, AI, \acrshort{gnss}/\acrshort{rtk} positioning, and advanced imaging to enhance precision farming. Competitors offer sophisticated communication systems, precise positioning, and advanced software solutions to meet modern agriculture's needs.
 
 \subsection{Our Differentiation and Positioning}
 
-Our ground-based \acrshort{3d} drone tracking system distinguishes itself by offering an affordable and accessible solution that eliminates the need for expensive onboard positioning and obstacle avoidance systems. By utilizing ground-based \acrshort{3d} tracking through calibrated and synchronized stations with advanced image processing, our system allows for the deployment of simpler drones without sophisticated onboard equipment.
-
-This approach provides several key benefits:
-
-\begin{itemize} 
-	\item \textbf{Enhanced Drone Efficiency and Cost Savings:} By removing onboard sensors drones become lighter and consume less energy, resulting in increased flight times and the ability to cover larger areas per mission. This also allows drones to carry additional payloads such as seeds, fertilizers, or pesticides, enhancing operational efficiency in tasks like seed planting or crop spraying. The reduction in onboard complexity lowers maintenance requirements and decreases the risk of technical failures, ensuring consistent operational capability. Overall, this leads to significant cost savings, making precision agriculture technologies more accessible to farmers with limited budgets.
-	
-	\item \textbf{Secure and Independent Communication System:} Operating within a local, enclosed communication system independent of network infrastructure ensures reliable performance regardless of connectivity issues common in rural agricultural areas. Unlike competitors relying on 5G networks, our system does not depend on external networks, enhancing operational reliability and improving data security and privacy. Processing tracking data locally reduces reliance on cloud services, giving farmers greater control over their data without concerns about transmitting sensitive information over public networks.
-	
-	\item \textbf{Scalability and Flexibility:} Our ground stations can track multiple drones simultaneously without adding complexity or weight to the drones themselves. This allows for scalable operations, enabling large-scale agricultural tasks to be performed efficiently. Farmers can easily expand their drone fleets without significant additional investment in drones with expensive onboard systems.
-	
-	\item \textbf{Integrated Software Solutions:} While our system reduces the need for onboard software, we provide user-friendly ground-based software for flight planning, real-time monitoring, and data analysis. Our software integrates with the ground stations to offer seamless control and management of drone operations, tailored to the specific needs of the agricultural sector (theoretical as building the drone is not part of this diploma thesis).
-\end{itemize}
-
-We position ourselves as a provider of innovative, cost-effective drone tracking solutions tailored to Austria's agricultural sector. Our ground-based system addresses challenges like network coverage limitations, high equipment costs, and drone payload restrictions, making it more accessible for small to medium enterprises. By removing the need for expensive onboard systems and reducing maintenance complexities, we offer a practical, efficient tool that improves farming operations without requiring substantial investment. This unique value proposition allows farmers to adopt modern drone technology, enhancing their efficiency and sustainability at a lower cost.
-
-\begin{figure}
-	[H] 
+\begin{figure}[H] 
 	\centering 
 	\hspace*{-1.5cm} 
 	\includegraphics[width=400pt]{figures/competitors.png} 
-	\caption{Strengths and Weaknesses of Agricultural Drone Competitors}
-	\source{Own illustration created with Matplotlib in Python}
+	\caption{Strengths and Weaknesses of Agricultural Drone Competitors \\ \small Source: Own illustration created with Matplotlib in Python}
 	\label{fig:strengths_weaknesses} 
 \end{figure}
 
+Our ground-based \acrshort{3d} drone tracking system offers an affordable and independent solution for Austria's agricultural sector. By using calibrated ground stations with advanced image processing, we eliminate the need for expensive onboard positioning and obstacle avoidance systems. This allows us to deploy simpler drones, reducing costs, maintenance complexities, and payload restrictions. As a result, small to medium enterprises can access modern drone technology, overcoming challenges like network coverage limitations and high equipment costs, making it a practical tool for improving farming operations without substantial investment.
+
+Our approach provides several key benefits:
+
+\begin{itemize} 
+	\item \textbf{Enhanced Efficiency and Cost Savings:} Without heavy onboard sensors, drones are lighter and consume less energy, increasing flight times and coverage area. They can carry more payloads like seeds, fertilizers, or pesticides, enhancing operational efficiency. Reduced complexity lowers maintenance and failure risk, leading to cost savings and making precision agriculture accessible to farmers with limited budgets.
+	
+	\item \textbf{Secure, Independent Communication:} Our local communication system operates independently of network infrastructure, ensuring reliability in areas with connectivity issues. Unlike competitors relying on 5G, our system enhances reliability, data security, and privacy by processing tracking data locally.
+	
+	\item \textbf{Scalability and Flexibility:} Our ground stations can track multiple drones simultaneously without adding complexity or weight to drones. This enables scalable operations, allowing farmers to expand fleets without significant additional investment.
+
+\end{itemize}
+
 \section{Conclusion}
 
-The market analysis reveals a significant opportunity for our ground-based \acrshort{3d} drone tracking system in the agricultural sector. As drone adoption in agriculture accelerates, our solution addresses key challenges like high costs, dependence on network infrastructure, and the complexity of onboard systems by eliminating the need for expensive onboard communication, positioning, and obstacle avoidance equipment. By enabling the use of simpler, more affordable drones with increased payload capacity and simplified maintenance, we offer a unique value proposition that differentiates us from competitors relying on complex onboard technologies. Our system aligns with the needs of small to medium agricultural enterprises seeking efficient and sustainable technologies without the barriers of high initial investment and technical complexity. Further research and engagement with industry stakeholders will refine our understanding of target customers and support a successful market entry, positioning us as a competitive player in the agricultural drone market focused on accessibility and practicality.
+The market analysis reveals a significant opportunity for our ground-based \acrshort{3d} drone tracking system in the agricultural sector. As drone adoption in agriculture accelerates, our solution addresses key challenges like high costs, dependence on network infrastructure, and the complexity of onboard systems by eliminating the need for expensive onboard positioning, and obstacle avoidance equipment. By enabling the use of simpler, more affordable drones with increased payload capacity and simplified maintenance, we offer a unique value proposition that differentiates us from competitors relying on complex onboard technologies. Our system aligns with the needs of small to medium agricultural enterprises seeking efficient and sustainable technologies without the barriers of high initial investment and technical complexity. Further research and engagement with industry stakeholders will refine our understanding of target customers and support a successful market entry, positioning us as a competitive player in the agricultural drone market focused on accessibility and practicality.
