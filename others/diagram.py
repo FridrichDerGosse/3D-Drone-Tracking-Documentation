@@ -51,7 +51,7 @@ ax.tick_params(pad=15)  # Add padding to move the labels outside of the plot
 plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=2, fontsize=9, frameon=False)
 
 # Title of the chart
-plt.title("Strengths and Weaknesses of Agricultural Drone Competitors", pad=40)
+plt.title("Comparison of Strengths and Weaknesses with Competitors", pad=40)
 
 # Increase padding between axis labels and plot to avoid overlap
 ax.set_rlabel_position(30)
