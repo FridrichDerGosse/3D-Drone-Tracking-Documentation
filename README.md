@@ -5,6 +5,25 @@
 - Moodle-Kurs "HÖHERE: Vorlagen Diplomarbeit"
 - [Bundesministerium Bildung](https://www.diplomarbeiten-bbs.at/)
 
+## Typical documentation structure
+
+- Title Page (Titelblatt)
+- Abstract/Summary (Abstract/Zusammenfassung)
+- Table of Contents (Inhaltsverzeichnis)
+- List of Abbreviations (optional) (Abkürzungsverzeichnis (optional))
+- List of Figures (Abbildungsverzeichnis)
+- List of Tables (Tabellenverzeichnis)
+- Introduction/Motivation (Einleitung/Motivation)
+- State of the Art (Stand der Technik)
+- Methods (Methoden)
+- Results (Ergebnisse)
+- Discussion (Diskussion)
+- Conclusion (Schlussfolgerung)
+- Outlook (Ausblick)
+- Acknowledgements (Danksagung)
+- References/Bibliography (Referenzen/Literaturliste)
+- Appendices (Anhänge)
+
 ## File Structure
 
 ```
