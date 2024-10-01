@@ -1,12 +1,100 @@
 \chapter{Introduction}
 
-In the introduction, it is explained why this topic was chosen. (Objectives and tasks of the overall project, technical and economic environment)
+Current drone tracking systems often rely on onboard equipment, requiring expensive hardware installations on each drone. This thesis focuses on developing a ground-based 3D tracking system capable of monitoring "dumb" drones—those without onboard tracking systems—using calibrated and synchronized ground stations equipped with image processing technology.
+
+The goal of this project is to design and implement a functional prototype consisting of three ground stations that can accurately track drones in three-dimensional space. The system aims to calculate drone positions by processing images captured by the ground stations and display the tracked drones through a 3D visualization interface.
+
+This topic is important because it addresses the high costs and limitations associated with current drone tracking methods. By eliminating the need for onboard tracking hardware, the proposed system could make drone tracking more accessible and cost-effective. The problem of tracking drones without onboard systems is significant, as it could expand the usability of drones in various industries where cost and simplicity are critical factors.
+
+Solving this problem is crucial for reducing operational costs and enhancing the scalability of drone applications. Existing research primarily focuses on onboard tracking solutions or GPS-based methods, which may not be feasible for all situations due to cost or technical constraints. This thesis aims to contribute to the field by providing an alternative ground-based tracking solution, potentially filling a gap in current drone tracking technologies.
+
+This topic was chosen because it combines practical engineering challenges with significant potential benefits in the field of drone technology. By developing a ground-based tracking system, we aim to offer a viable alternative to existing methods, addressing a current need in the industry.
 
 \section{Detailed Task Description}
 
-\subsection{Student Name 1}
+\subsection{Housing}
 
-\subsection{Student Name 2}
+\subsubsection{Primary Station Housing}
+
+\textbf{Responsible:} Prantl Niclas
+
+Design, test, and build housing for the primary station, incorporating components such as a display and calibration hardware.
+
+\subsubsection{Secondary Station Housing}
+
+\textbf{Responsible:} Prantl Niclas
+
+Design, test, and build housing for secondary stations.
+
+\subsection{Hardware Selection/Design}
+
+\subsubsection{Camera}
+
+\textbf{Responsible:} Krahbichler Lukas
+
+Select, procure, and set up a suitable camera.
+
+\subsubsection{Single-Board Computer}
+
+\textbf{Responsible:} Krahbichler Lukas
+
+Select and set up a single-board computer capable of efficiently handling the required image processing and data transmission tasks.
+
+\subsubsection{Display}
+
+\textbf{Responsible:} Krahbichler Lukas
+
+Select and integrate a display for visualization, ensuring compatibility with other hardware components.
+
+\subsubsection{Power Supply}
+
+\textbf{Responsible:} Krahbichler Lukas
+
+Design or select a power supply system that meets the requirements of all hardware components to ensure stable and efficient operation.
+
+\subsubsection{Calibration}
+
+\textbf{Responsible:} Krahbichler Lukas
+
+Select and integrate calibration hardware essential for precise positioning and synchronization of the stations.
+
+\subsubsection{Data Transfer}
+
+\textbf{Responsible:} Krahbichler Lukas
+
+Select and test a secure and fast communication medium for data transfer.
+
+\subsection{Programming}
+
+\subsubsection{3D Angle Calculations}
+
+\textbf{Responsible:} Prantl Niclas
+
+Develop algorithms to calculate drone positions based on data from the stations.
+
+\subsubsection{Camera Tracking}
+
+\textbf{Responsible:} Krahbichler Lukas
+
+Implement software to track drones within the camera's output stream.
+
+\subsubsection{Data Transfer}
+
+\textbf{Responsible:} Krahbichler Lukas
+
+Develop and implement a system to synchronize data transfer from secondary stations to the main station.
+
+\subsubsection{Calibration}
+
+\textbf{Responsible:} Krahbichler Lukas
+
+Create software to perform calibration procedures, accurately calculating relative positions and rotations of the stations.
+
+\subsubsection{3D Visualization}
+
+\textbf{Responsible:} Prantl Niclas
+
+Program a 3D visualization interface to display tracked drones, integrating data from all stations.
 
 \section{Documentation of the Work}
 
@@ -25,7 +113,7 @@ Further suggestions:
 
 \begin{itemize}
 	\item Manufacturing documents
-	\item Test cases (measurement results...)
+	\item Test cases (measurement results, etc.)
 	\item User documentation
-	\item Used technologies and development tools
+	\item Technologies and development tools used
 \end{itemize}
