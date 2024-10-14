@@ -1,0 +1,60 @@
+\chapter{Solution}
+
+\section{Hardware}
+
+\subsection{Computer}
+
+\begin{itemize}
+	\item NVIDIA Jetson Nano: too expensive and focuses on AI-Power
+	\item ASUS Tinker Board S: not enough processing power?
+	\item ArmSom Sige7: Good value, good processing performance
+\end{itemize}
+
+
+\subsection{Camera}
+
+When choosing the ArmSom Sige7, we reviewed their other hardware to guarantee compatibility, rather than relying on third-party components. We found that they provide a 4K camera module that is fully compatible and reasonably priced.
+
+\subsection{Display}
+
+We found that ArmSom offers a 10.1-inch Full HD display that is fully compatible and reasonably priced.
+
+\subsection{Power Supply}
+
+\subsection{Data Transfer}
+
+\subsection{Calibration}
+
+For calibration the main station can rotate its head (camera, laser, communication) in 2 axes
+- Precise ToF Laser with enough range (30 meter at least)
+- Use Radio-Com hardware for approximate direction determination
+
+Calibration/start-up procedure:
+
+- Calibrate C-axis stepper (end-switches)
+- Calibrate B-axis servo (check max rotation with gyro)
+- Move motors to neutral position
+- Connect with other stations (all stations in neutral position)
+- Get 3d magnetic orientation of every station
+- Find estimate directions by sweeping and checking RSSI
+- Measuare exact distance and direction (2 axes) with ToF Laser
+- Move all cameras to perfect position for best maximum coverage in air (only if secondary stations can do that)
+- Calculate exact relative positions/angles of cameras.
+
+\section{Housing}
+
+\subsection{Primary Station Housing}
+
+\subsection{Secondary Station Housing}
+
+\section{Programming}
+
+\subsection{3D Angle Calculations}
+
+\subsection{Camera Tracking}
+
+\subsection{Data Transfer}
+
+\subsection{Calibration}
+
+\subsection{3D Visualization}
