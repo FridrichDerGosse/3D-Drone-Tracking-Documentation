@@ -1,0 +1,65 @@
+\chapter{Solution}
+
+\section{Hardware}
+
+\subsection{Computer}
+
+\begin{itemize}
+	\item NVIDIA Jetson Nano: too expensive and focuses on AI-Power
+	\item ASUS Tinker Board S: not enough processing power?
+	\item ArmSom Sige7: Good value, good processing performance
+\end{itemize}
+
+
+\subsection{Camera}
+
+When choosing the ArmSom Sige7, we reviewed their other hardware to guarantee compatibility, rather than relying on third-party components. We found that they provide a 4K camera module that is fully compatible and reasonably priced.
+
+\subsection{Display}
+
+We found that ArmSom offers a 10.1-inch Full HD display that is fully compatible and reasonably priced.
+
+\subsection{Power Supply}
+
+Not sure yet (power bank didn't work)
+
+\subsection{Data Transfer}
+
+Use radio communication for interdependence and security. 
+
+\subsection{Calibration}
+
+For calibration the main station can rotate its head (camera, laser, communication) in 2 axes (pitch and yaw).
+Roll is not possible (idea was to compensate with motorized feets). We have decided that we will just correct the inclination of the station in the calculation. (measured with gyro/compass)
+For distance measurement: Precise ToF Laser with enough range (30 meter at least)
+We discarded the use of radio direction finding for approximate direction and have decided to use the camera instead, which should be possible since we already need line of sight for the ToF Laser. (Additionally the secondary stations are full orange with should be easier to spot in a green field).
+
+Calibration/start-up procedure:
+
+- Calibrate yaw stepper (end-switches)
+- Calibrate pitch steppers (end-switches)
+- Move motors to neutral position
+- Connect with other stations (all stations in neutral position)
+- Get 3d magnetic orientation of every station
+- Find estimate directions by sweeping yaw on primary station and looking for other stations with camera (secondaries will perhaps help in this process?)
+- Measuare exact distance and direction (2 axes) with ToF Laser (direction can be read by steps from end-switch and gyro/compass)
+- Move all cameras to perfect position for best maximum coverage in air
+- Calculate exact relative positions/angles of cameras.
+
+\section{Housing}
+
+\subsection{Primary Station Housing}
+
+\subsection{Secondary Station Housing}
+
+\section{Programming}
+
+\subsection{3D Angle Calculations}
+
+\subsection{Camera Tracking}
+
+\subsection{Data Transfer}
+
+\subsection{Calibration}
+
+\subsection{3D Visualization}
