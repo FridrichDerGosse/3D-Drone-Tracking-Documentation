@@ -1,5 +1,7 @@
 # 3D-Object-Tracking-Documentation
 
+### [View PDF in Browser](https://fridrichdergosse.github.io/3D-Drone-Tracking-Documentation/main.pdf)
+
 ## Resources
 
 - Moodle-Kurs "HÖHERE: Vorlagen Diplomarbeit"

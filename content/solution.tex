@@ -1,65 +1,80 @@
 \chapter{Solution}
 
 \section{Hardware}
+% Responsible: Lukas Krahbichler
 
 \subsection{Computer}
-
+To select the single-board computer, several options were compared based on their processing power, affordability, and compatibility:
 \begin{itemize}
-	\item NVIDIA Jetson Nano: too expensive and focuses on AI-Power
-	\item ASUS Tinker Board S: not enough processing power?
-	\item ArmSom Sige7: Good value, good processing performance
+	\item \textbf{NVIDIA Jetson Nano:} This board offers strong AI capabilities, with a GPU that supports advanced neural network computations. However, it was significantly more expensive than alternatives and its AI-focused design exceeded the project's requirements for image processing.
+	\item \textbf{ASUS Tinker Board S:} While affordable, this board lacked sufficient computational power for real-time image processing tasks, rendering it unsuitable for the project.
+	\item \textbf{ArmSom Sige7 (Basic):} This board provided the optimal balance between affordability and processing performance. It supports the necessary image processing workloads while staying within budget.
 \end{itemize}
-
+The ArmSom Sige7 Basic variant was selected due to its sufficient computational power and cost-effectiveness. The Pro Max version, while offering better performance, was deemed unnecessary for this project's scope and budget. Price comparisons and performance benchmarks further confirmed the suitability of the chosen model.
 
 \subsection{Camera}
-
-When choosing the ArmSom Sige7, we reviewed their other hardware to guarantee compatibility, rather than relying on third-party components. We found that they provide a 4K camera module that is fully compatible and reasonably priced.
+The camera module chosen was the 4K model from ArmSom, specifically designed to integrate seamlessly with the ArmSom Sige7. This decision prioritized compatibility and reduced integration risks, avoiding potential issues with third-party hardware. The high resolution theoretically extends the effective tracking range, making it ideal for drone detection at longer distances.
+% Problems encountered with the camera module during testing can be documented here for future improvements.
 
 \subsection{Display}
-
-We found that ArmSom offers a 10.1-inch Full HD display that is fully compatible and reasonably priced.
+Initially, a 10.1-inch Full HD display from ArmSom was integrated into the primary station. The display was chosen for its compatibility with the ArmSom Sige7 and its reasonable price. However, as the project progressed, a redesign of the housing necessitated its removal. Redirecting the visualization to a laptop allowed for a more compact and efficient housing design. This change eliminated the need for a larger primary station housing, optimizing portability and practicality.
+% The display: https://www.armsom.org/product-page/armsom-display-10-hd
 
 \subsection{Power Supply}
-
-Not sure yet (power bank didn't work)
+The chosen power supply was a PD 100 W, 20,000mAh power bank with USB-C output. This model met the project's technical requirements as follows:
+\begin{itemize}
+	\item It supports USB-PD, essential for powering the ArmSom Sige7.
+	\item Its 100W output ensures compatibility with all connected components, including the PCB.
+	\item It has three ports, enabling simultaneous connections for the ArmSom board, the PCB, and charging functionality.
+\end{itemize}
+Initial issues arose when the power bank intermittently failed to provide a stable output for the ArmSom board, despite meeting technical specifications. The power bank's behavior included unexpected cycling on and off, which necessitated adding two separate start buttons—one for the power bank and one for the ArmSom board. Although a custom power management system would have resolved these issues, time constraints required relying on this solution.
 
 \subsection{Data Transfer}
-
-Use radio communication for interdependence and security. 
+NRF24L01+ PA + LNA modules with external antennas were used to establish a local radio communication network. These modules replaced smaller NRF24L01 modules with PCB antennas, which failed in the required 3-node mesh configuration. While the updated modules resolved reliability issues, their high transmission power caused interference when modules operated in close proximity. This problem was mitigated by limiting the transmission power to appropriate levels, ensuring stable operation.
+% Problems with these modules can be detailed further
 
 \subsection{Calibration}
 
-For calibration the main station can rotate its head (camera, laser, communication) in 2 axes (pitch and yaw).
-Roll is not possible (idea was to compensate with motorized feets). We have decided that we will just correct the inclination of the station in the calculation. (measured with gyro/compass)
-For distance measurement: Precise ToF Laser with enough range (30 meter at least)
-We discarded the use of radio direction finding for approximate direction and have decided to use the camera instead, which should be possible since we already need line of sight for the ToF Laser. (Additionally the secondary stations are full orange with should be easier to spot in a green field).
+The calibration hardware ensures precise alignment and positioning of the primary and secondary stations, which is critical for accurate 3D tracking. Each station features a rotatable head capable of moving in two axes (pitch and yaw), while roll adjustments are handled through software corrections based on gyroscope measurements. Although the rotation functionality is not required for the secondary stations, all stations share the same design to streamline production and minimize complexity. The primary station uniquely incorporates a Time-of-Flight (ToF) laser for precise distance measurements, whereas the secondary stations rely solely on their cameras for alignment.
 
-Calibration/start-up procedure:
+\subsection{Calibration}
 
-- Calibrate yaw stepper (end-switches)
-- Calibrate pitch steppers (end-switches)
-- Move motors to neutral position
-- Connect with other stations (all stations in neutral position)
-- Get 3d magnetic orientation of every station
-- Find estimate directions by sweeping yaw on primary station and looking for other stations with camera (secondaries will perhaps help in this process?)
-- Measuare exact distance and direction (2 axes) with ToF Laser (direction can be read by steps from end-switch and gyro/compass)
-- Move all cameras to perfect position for best maximum coverage in air
-- Calculate exact relative positions/angles of cameras.
+The calibration hardware ensures precise alignment and positioning of the primary and secondary stations, which is essential for accurate 3D drone tracking. Each station features a rotatable head capable of moving in two axes (pitch and yaw), while roll adjustments are handled through software corrections using gyroscope measurements. Although the rotation capability is not strictly necessary for the secondary stations, the design was standardized across all stations to simplify production and reduce complexity. The primary station incorporates a Time-of-Flight (ToF) laser for precise distance measurements, while the secondary stations rely on their cameras for alignment.
+
+\subsubsection*{Components and Functionality}
+
+\paragraph{Rotatable Head (Pitch and Yaw Axes):}
+The rotatable head utilizes 28BYJ-48 stepper motors, chosen for their compact size, cost-effectiveness, and sufficient precision for this application. These motors are controlled using ULN2003 driver boards, ensuring reliable step control and compatibility with the system's microcontroller. To limit the movement range of the motors, end-switches are installed in a normally closed configuration. This setup not only detects wiring faults, such as loose connections or damaged cables, but also provides accurate position references for the motors during calibration. Servos were initially considered for their higher torque and precision, but they were ultimately dismissed due to their larger size, higher cost, and additional complexity.
+
+\paragraph{Gyroscope and Compass:}
+The GY-521 gyroscope module provides 6-axis data, combining accelerometer and gyroscope readings. It is essential for real-time tilt measurement and inclination compensation, allowing the system to maintain proper alignment even on uneven terrain. A GY-271 compass module was included to provide absolute rotational data but was eventually excluded from the calibration process due to its unreliable performance. Extensive testing revealed significant inconsistencies between compass readings on different stations and fluctuations during repeated calibration attempts. While the compass remains physically present on the PCB, it is not active in the current calibration setup.
+
+\paragraph{ToF Laser Module:}
+The primary station employs a DFRobot Infrared Laser Distance Sensor capable of measuring distances from 5 centimeters up to 80 meters with millimeter-level accuracy. This sensor plays a critical role in determining the precise distance between stations during calibration. The ToF laser operates using infrared light and requires an unobstructed line of sight to function effectively. It is integrated into the rotatable head alongside the camera and communication modules to facilitate accurate alignment with secondary stations.
+
+\paragraph{Camera for Visual Alignment:}
+Each station is equipped with a 4K camera module, which is used for visual identification and alignment during calibration. The cameras locate the distinct bright orange secondary stations within their field of view, enabling precise positioning. This approach replaces earlier attempts to use radio-based direction finding, which proved unreliable at the short distances required for this application.
+
+\subsubsection*{Hardware Limitations and Decisions}
+The calibration hardware relies on the combined functionality of the stepper motors, gyroscope, ToF laser, and cameras. Early designs included motorized feet for roll adjustments and compass-based absolute orientation, but these were discarded due to practical limitations. While the standardization of design across all stations simplified manufacturing, it introduced some redundant functionality, such as the rotatable head on secondary stations, which is rarely used for calibration purposes.
 
 \section{Housing}
 
-\subsection{Primary Station Housing}
-
-\subsection{Secondary Station Housing}
+% Responsible: Prantl Niclas
 
 \section{Programming}
 
 \subsection{3D Angle Calculations}
+% Responsible: Prantl Niclas
 
 \subsection{Camera Tracking}
+% Responsible: Lukas Krahbichler
 
 \subsection{Data Transfer}
+% Responsible: Lukas Krahbichler
 
 \subsection{Calibration}
+% Responsible: Lukas Krahbichler
 
 \subsection{3D Visualization}
+% Responsible: Prantl Niclas
