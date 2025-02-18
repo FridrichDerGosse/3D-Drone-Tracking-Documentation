@@ -23,22 +23,26 @@ The idea is to implement local radio communication as the primary data transfer 
 % Responsible: Lukas Krahbichler
 
 \subsection{Calibration}
-Calibration is the process of determining the relative positions and orientations of the ground stations, which is essential for accurately calculating the drone's position during operation. Unlike competitors who utilize GNSS with RTK for positioning, this system aims to achieve similar results through a simpler, more cost-effective, and entirely local solution. The calibration hardware, integrated onto a custom PCB, could include components such as:
+Calibration determines the relative positions and orientations of the ground stations, essential for accurate 3D drone tracking. Unlike competitors who use GNSS with RTK, this system aims to achieve similar precision through a more cost-effective and fully local approach. 
+
+The calibration hardware, integrated onto a custom PCB, could include:
 \begin{itemize}
 	\item Power Delivery
 	\item Time-of-Flight (ToF) Laser
 	\item Communication modules
-	\item Stepper motor
-	\item Servo motor
+	\item Stepper motors
+	\item Servo motors
 	\item Gyroscope/Magnetometer/Accelerometer (9DOF)
 	\item End switches
-	\item Micro-Controller
+	\item Microcontroller
 \end{itemize}
-The ToF laser, which is only present in the primary station, is a key component for precise distance measurement. During calibration, approximate directions could be determined using the communication system, supplemented by detailed measurements with the ToF laser. These measurements establish the relative positions and angles of the stations, forming the basis for accurate drone tracking.
-% Hierbei handelt es sich teilweise um die ursprüngliche idee. weitere ideen kamen erst als diese schief liefen. gehören diese trotzdem hier hin?
-% Responsible: Lukas Krahbichler
+
+During calibration, approximate directions could be determined using the communication system, supplemented by precise distance measurements from the ToF laser. These measurements define the relative positions and angles of the stations, forming the foundation for accurate drone tracking.
+
 
 \section{Housing}
+
+Write down the initial ideas for the housing (in theory before starting the design process)
 
 % Responsible: Prantl Niclas
 
