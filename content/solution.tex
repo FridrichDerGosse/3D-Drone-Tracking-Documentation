@@ -1,65 +1,155 @@
 \chapter{Solution}
 
 \section{Hardware}
+% Responsible: Lukas Krahbichler
 
 \subsection{Computer}
-
+Several single-board computers were evaluated for this project:
 \begin{itemize}
-	\item NVIDIA Jetson Nano: too expensive and focuses on AI-Power
-	\item ASUS Tinker Board S: not enough processing power?
-	\item ArmSom Sige7: Good value, good processing performance
+	\item \textbf{NVIDIA Jetson Nano:} Offers strong AI capabilities but is more expensive and exceeds project requirements.
+	\item \textbf{ASUS Tinker Board S:} Affordable but lacks sufficient computational power for real-time image processing.
+	\item \textbf{ArmSom Sige7 (Basic):} Balances affordability and performance, supporting necessary image processing tasks.
+	\item \textbf{Raspberry Pi 4 Model B (8GB):} Well-supported but has less processing power for image processing compared to other options.
 \end{itemize}
+
+The ArmSom Sige7 Basic was chosen for its adequate performance and cost-effectiveness. However, during development, issues arose: one of the three units failed to boot, and limited documentation and support made troubleshooting difficult. In hindsight, selecting a more widely adopted platform like NVIDIA, ASUS, or Raspberry Pi would have offered greater reliability and community support.
+
+In the end, the combination of hardware failures, time constraints preventing further troubleshooting or contacting the manufacturer, and the costs associated with replacing the hardware contributed to the project not being fully completed.
 
 
 \subsection{Camera}
+The camera module chosen was the 4K model from ArmSom, specifically designed to integrate seamlessly with the ArmSom Sige7. This decision prioritized compatibility and reduced integration risks, avoiding potential issues with third-party hardware. 
 
-When choosing the ArmSom Sige7, we reviewed their other hardware to guarantee compatibility, rather than relying on third-party components. We found that they provide a 4K camera module that is fully compatible and reasonably priced.
+TODO: Document problems with the camera (like when the image was too dark and how we solved it)
 
 \subsection{Display}
-
-We found that ArmSom offers a 10.1-inch Full HD display that is fully compatible and reasonably priced.
+Initially, a 10.1-inch Full HD display from ArmSom was integrated into the primary station. The display was chosen for its compatibility with the ArmSom Sige7 and its reasonable price. However, as the project progressed, a redesign of the housing necessitated its removal. Redirecting the visualization to a laptop allowed for a more compact and efficient housing design. This change eliminated the need for a larger primary station housing, optimizing portability and practicality.
+% The display: https://www.armsom.org/product-page/armsom-display-10-hd
 
 \subsection{Power Supply}
+The chosen power supply was a PD 100 W, 20,000mAh power bank with USB-C output. This model met the project's technical requirements as follows:
+\begin{itemize}
+	\item It supports USB-PD, essential for powering the ArmSom Sige7.
+	\item Its 100W output ensures compatibility with all connected components, including the PCB.
+	\item It has three ports, enabling simultaneous connections for the ArmSom board, the PCB, and charging functionality.
+\end{itemize}
 
-Not sure yet (power bank didn't work)
+Despite meeting these specifications, several issues arose during use. The power bank exhibited unpredictable behavior, intermittently cycling on and off. While this occurred less frequently when the power bank was fully or nearly fully charged, the problem was never completely resolved. Additionally, unexpected voltage drops were observed on the PCB, with measurements showing 3.6V instead of the expected 5V from the USB output. This raised concerns about power stability and its impact on system reliability.
+
+The two separate start buttons—one for the power bank and one for the ArmSom board—were implemented purely due to the independent power controls of both components, ensuring that shutting off the power bank did not abruptly cut power to the ArmSom. Furthermore, it is highly likely that one of the ArmSom computers failed due to unstable voltage levels or power spikes originating from the power bank, though this could not be definitively confirmed.
 
 \subsection{Data Transfer}
 
-Use radio communication for interdependence and security. 
+Initially, the NRF24L01 modules with PCB antennas were integrated directly onto the PCB to enable local radio communication between stations. However, these modules proved unreliable in the required 3-node mesh system, frequently failing to maintain stable communication.
+
+To resolve this, the system was upgraded to NRF24L01+ PA + LNA modules with external antennas. This change improved signal strength but required modifications to the housing design to accommodate the larger modules. The PCB remained unchanged due to the identical pinout, but the new modules were too large to be mounted directly. Instead, they had to be repositioned and connected via jumper cables.
+
+During testing, the mesh network continued to exhibit failures or functioned only when antennas were placed in specific orientations. Further research indicated that the high transmission power of the new modules caused interference in close-range operation. Reducing the transmission power resolved these stability issues, allowing the modules to function reliably within the system.
 
 \subsection{Calibration}
+The calibration hardware ensures precise alignment and positioning of the primary and secondary stations for 3D tracking. Each station features a rotatable head for pitch and yaw adjustments, while roll is compensated via gyroscope measurements. Secondary stations share the same design for simplicity, but only the primary station includes a Time-of-Flight (ToF) laser for precise distance measurement. Secondary stations rely on camera-based alignment.
 
-For calibration the main station can rotate its head (camera, laser, communication) in 2 axes (pitch and yaw).
-Roll is not possible (idea was to compensate with motorized feets). We have decided that we will just correct the inclination of the station in the calculation. (measured with gyro/compass)
-For distance measurement: Precise ToF Laser with enough range (30 meter at least)
-We discarded the use of radio direction finding for approximate direction and have decided to use the camera instead, which should be possible since we already need line of sight for the ToF Laser. (Additionally the secondary stations are full orange with should be easier to spot in a green field).
+\subsubsection*{Components and Functionality}
 
-Calibration/start-up procedure:
+\paragraph{Rotatable Head (Pitch and Yaw Axes):}
+The system uses compact 28BYJ-48 stepper motors controlled via ULN2003 driver boards. End-switches, configured in normally closed mode, detect faults like loose connections and set position limits. Servos were initially considered but dismissed due to cost, size, and complexity.
 
-- Calibrate yaw stepper (end-switches)
-- Calibrate pitch steppers (end-switches)
-- Move motors to neutral position
-- Connect with other stations (all stations in neutral position)
-- Get 3d magnetic orientation of every station
-- Find estimate directions by sweeping yaw on primary station and looking for other stations with camera (secondaries will perhaps help in this process?)
-- Measuare exact distance and direction (2 axes) with ToF Laser (direction can be read by steps from end-switch and gyro/compass)
-- Move all cameras to perfect position for best maximum coverage in air
-- Calculate exact relative positions/angles of cameras.
+\paragraph{Gyroscope and Compass:}
+The GY-521 gyroscope provides 6-axis data for tilt measurement and alignment correction. A GY-271 compass was initially included for absolute orientation but was abandoned due to inconsistent calibration results. The compass remains on the PCB but is not in use.
+
+\paragraph{ToF Laser Module:}
+The primary station features a DFRobot Infrared Laser Distance Sensor with a 5 cm to 80 m range and millimeter-level accuracy. It is used for precise distance measurements and requires an unobstructed line of sight between the stations.
+
+\paragraph{Camera for Visual Alignment:}
+Each station’s 4K camera identifies and aligns with other stations during calibration. The cameras should track the bright orange secondary stations for positioning, replacing the originally planned but unreliable radio-based direction-finding approach.
+
+\paragraph{Calibration PCB:}
+The calibration system relies on a custom-designed PCB to integrate various components necessary for precise positioning and alignment. The PCB was designed using \textbf{Altium Designer}, with components sourced from \textbf{DigiKey} and the board itself manufactured by \textbf{JLCPCB}. Assembly was completed both in the school’s workshop and at home, with components manually soldered.
+
+\textbf{Key Functions of the PCB:}
+- Provides power distribution to the calibration components.
+- Interfaces with the stepper motor drivers for head rotation control.
+- Integrates the gyroscope, compass, and ToF laser module.
+- Facilitates LED indicators for status feedback.
+
+\textbf{Issues Encountered During Development:}
+- The \textbf{USB input connector} was never soldered because the cable would not fit inside the housing. Instead, wires were directly soldered to the board.
+- The \textbf{Arduino orientation} was incorrect in the Altium design, resulting in the microcontroller being mounted in the opposite direction than originally planned.
+- The \textbf{LED on/off switching functionality} did not work as intended, requiring two additional manual connections to be made on each PCB.
+
+Despite these issues, the PCB successfully serves as the central interface for calibration hardware, integrating all necessary sensors and controllers to facilitate the calibration process.
+
+\subsubsection*{Hardware Limitations and Decisions}
+While the calibration system was designed to reduce costs compared to GNSS with RTK, the final implementation became expensive. In hindsight, the cost was close to that of RTK-based alternatives used by competitors.
 
 \section{Housing}
 
-\subsection{Primary Station Housing}
+Housing – Notes for Documentation
 
-\subsection{Secondary Station Housing}
+First Housing Version:
+- The initial housing design was created before all hardware was available, relying on online measurements. This led to size inaccuracies, such as the wrong display dimensions, which required reprinting.
+- Multiple redesigns were necessary to:
+- Accommodate hardware changes.
+- Improve access to internal components.
+- Simplify assembly and maintenance.
+- The housing was split into multiple parts to improve printability on a 3D printer.
+
+3D Printing Process:
+- Printer used: Bambu Lab P1S
+- Prototyping material: PLA was used for rapid iteration.
+- Final version material: PETG was used for improved durability and outdoor suitability.
+- Printing with PETG:
+- No significant increase in cost or print time (due to the use of High-Flow (HF) filament).
+- PETG requires 8 hours of drying in a filament dryer before printing to achieve high-quality results.
+
+Key Design Challenges and Iterative Improvements:
+- Countersinks: Initially too small, requiring adjustments depending on print quality.
+- Screw Holes: Some holes were too large, allowing screws to spin freely instead of securing properly.
+- Tolerance Adjustments: Necessary to ensure proper fitment of components.
+- Ventilation: Needed to be improved for better airflow and cooling.
+- General Design Issues: Various small refinements to improve usability and assembly.
+- Hardware Changes: Components changed throughout development, requiring modifications to the housing.
+
+Second Housing Version:
+- Incorporated lessons learned from the first design, focusing on:
+- Improved modularity for easier assembly and maintenance.
+- Better hardware accessibility, reducing disassembly time for maintenance.
+- More compact design, made possible by removing the display (which dictated the size of the first version).
+- Reused the motor mechanism from the first version to save time.
+- The bottom section, which houses the PCB, computer, power bank, and fan, was redesigned entirely.
+- Introduction of threaded inserts:
+- Improved durability of screw connections.
+- Simplified assembly and disassembly.
+- Ensured that screw holes remain intact even after multiple assembly cycles.
+
+Yaw Motor Issue \& Gear System Upgrade:
+- The initial yaw motor was too weak, leading to performance issues.
+- A gear system was introduced to increase torque, ensuring reliable movement.
+
+Refinements to the Bottom Section:
+Even after the redesign, additional modifications were necessary:
+- Better connection between different housing parts to enhance structural integrity.
+- Optimized airflow to improve cooling efficiency.
+- Increased structural stability to withstand vibrations and external forces.
+- Refined hardware mounting positions for easier integration of components.
+- Improved access to the computer’s ports, making connectivity more convenient.
+- Redesign of the power button mechanism for a more intuitive and reliable interface.
+
+% Responsible: Prantl Niclas
 
 \section{Programming}
 
 \subsection{3D Angle Calculations}
+% Responsible: Prantl Niclas
 
 \subsection{Camera Tracking}
+% Responsible: Lukas Krahbichler
 
 \subsection{Data Transfer}
+% Responsible: Lukas Krahbichler
 
 \subsection{Calibration}
+% Responsible: Lukas Krahbichler
 
 \subsection{3D Visualization}
+% Responsible: Prantl Niclas

@@ -1,61 +1,64 @@
 \chapter{Solution Idea}
 
-% https://github.com/FridrichDerGosse/3D-Object-Tracking-Documentation/issues/16
-
 \section{Hardware}
 
 \subsection{Computer}
-
-Compare boards online (power for image processing needed)
+The core idea is to perform image processing locally on each unit, thereby eliminating the need to transmit large volumes of raw image data to a central processing unit. This decentralized approach reduces the complexity of high-bandwidth data transfers and ensures that only the essential results, such as computational outputs, are transmitted. By evaluating single-board computers, the goal is to identify a cost-effective option that provides sufficient computational power for these local tasks. This approach not only streamlines data flow but also enhances scalability and independence between the stations.
+% Responsible: Lukas Krahbichler
 
 \subsection{Camera}
-
-Compatible (with single board computer), good value camera. 4k would be good (for higher distance tracking)
+The selected camera must be compatible with the chosen single-board computer and provide high resolution to enable accurate tracking over greater distances. A 4K camera is proposed, as higher resolution theoretically extends the effective range of tracking. This choice balances precision and affordability, ensuring the system's effectiveness without unnecessary costs.
+% Responsible: Lukas Krahbichler
 
 \subsection{Display}
-
-Search for compatible Full HD 8-12 inch display for a reasonable price
+The primary station will include a display for visualizing tracked drone data. The visualization is one of the system's primary goals and will be developed as part of the programming section. The parameters for the display, such as resolution (Full HD) and size (8 to 12 inches), were secondary considerations compared to compatibility and affordability. To reduce costs, the display will only be included in the primary station, ensuring that it provides sufficient functionality for monitoring without adding unnecessary expenses.
+% Responsible: Lukas Krahbichler
 
 \subsection{Power Supply}
-
-USB-C input
-Battery-powered
-Power-Supply on PCB for all components
+The proposed solution involves using an off-the-shelf power bank system to supply energy to all components, including the single-board computer, camera, display, and calibration hardware. This approach avoids the complexity of designing and building a custom battery management system, saving development time and effort. The power bank should have adequate output to power all components reliably and sufficient capacity to operate the system for a reasonable duration, although extended battery life is not a primary focus.
+% Responsible: Lukas Krahbichler
 
 \subsection{Data Transfer}
-
-- Local radio communication (could double for approximate direction determination for calibration)
+The idea is to implement local radio communication as the primary data transfer medium between the stations. This ensures independence from external networks, such as cellular systems, enhancing both security and operational reliability. By avoiding reliance on external infrastructure, the system becomes more robust and adaptable to various operational scenarios.
+% Responsible: Lukas Krahbichler
 
 \subsection{Calibration}
+Calibration determines the relative positions and orientations of the ground stations, essential for accurate 3D drone tracking. Unlike competitors who use GNSS with RTK, this system aims to achieve similar precision through a more cost-effective and fully local approach. 
 
-PCB to connect everything (with Arduino for the things our Image Processing Unit is not capable of doing)
-- PCB will also integrate Power-Supply
+The calibration hardware, integrated onto a custom PCB, could include:
+\begin{itemize}
+	\item Power Delivery
+	\item Time-of-Flight (ToF) Laser
+	\item Communication modules
+	\item Stepper motors
+	\item Servo motors
+	\item Gyroscope/Magnetometer/Accelerometer (9DOF)
+	\item End switches
+	\item Microcontroller
+\end{itemize}
 
-PCB:
-- Power Delivery
-- ToF Laser
-- Communication
-- Stepper
-- Servo
-- Gyro/Mag/Acc 9DOF
-- End switch
+During calibration, approximate directions could be determined using the communication system, supplemented by precise distance measurements from the ToF laser. These measurements define the relative positions and angles of the stations, forming the foundation for accurate drone tracking.
 
-With 40pin cable to Computer and/or with extra Chip
 
 \section{Housing}
 
-\subsection{Primary Station Housing}re.
+Write down the initial ideas for the housing (in theory before starting the design process)
 
-\subsection{Secondary Station Housing}
+% Responsible: Prantl Niclas
 
 \section{Programming}
 
 \subsection{3D Angle Calculations}
+% Responsible: Prantl Niclas
 
 \subsection{Camera Tracking}
+% Responsible: Lukas Krahbichler
 
 \subsection{Data Transfer}
+% Responsible: Lukas Krahbichler
 
 \subsection{Calibration}
+% Responsible: Lukas Krahbichler
 
 \subsection{3D Visualization}
+% Responsible: Prantl Niclas
