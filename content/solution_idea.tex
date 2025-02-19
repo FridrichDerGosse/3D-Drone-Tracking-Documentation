@@ -42,23 +42,37 @@ During calibration, approximate directions could be determined using the communi
 
 \section{Housing}
 
-Write down the initial ideas for the housing (in theory before starting the design process)
+The initial proposition of the housing focused on following principles:
+\begin{itemize}
+	\item Sturdiness
+	\item Size
+	\item Airflow (Cooling) for the Computer
+\end{itemize}
+
+?? wtf should i write about dis 
 
 % Responsible: Prantl Niclas
 
 \section{Programming}
 
-\subsection{3D Angle Calculations}
-% Responsible: Prantl Niclas
-
-\subsection{Camera Tracking}
-% Responsible: Lukas Krahbichler
-
-\subsection{Data Transfer}
-% Responsible: Lukas Krahbichler
-
 \subsection{Calibration}
 % Responsible: Lukas Krahbichler
 
+\subsection{Camera Tracking}
+Being the key element in this project, the cameras should be able to detect and track drones mid air and calculate their relative angle to the ground station. By already knowing the angle the camera is facing, this can be done by reversing the fish-eye effect of the camera and then multiplying the relative x and y position in the image by the cameras FOV.
+
+% Responsible: Lukas Krahbichler
+
+\subsection{Data Transfer}
+
+% Responsible: Lukas Krahbichler
+
+\subsection{3D Angle Calculations}
+Having already calculated the relative angles for each ground station, the individual angles are being combined by using simple trigonometry. 
+
+% Responsible: Prantl Niclas
+
+
 \subsection{3D Visualization}
+Operating independently from the tracking suite, the visualization system retrieves data through network sockets. It provides a comprehensive real-time display of all three ground stations and their respective cameras. When a target is detected, the system dynamically renders lines extending from each station to the target, visually representing the tracking process. Additionally, a sphere is displayed at the calculated target position, with its size indicating the accuracy of the estimation, ensuring clear situational awareness.
 % Responsible: Prantl Niclas
