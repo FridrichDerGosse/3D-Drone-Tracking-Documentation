@@ -19,13 +19,13 @@ The proposed solution involves using an off-the-shelf power bank system to suppl
 % Responsible: Lukas Krahbichler
 
 \subsection{Data Transfer}
-The idea is to implement local radio communication as the primary data transfer medium between the stations. This ensures independence from external networks, such as cellular systems, enhancing both security and operational reliability. By avoiding reliance on external infrastructure, the system becomes more robust and adaptable to various operational scenarios.
+The idea is to implement local radio communication as the primary data transfer medium between the stations. This ensures independence from external networks, such as cellular systems, enhancing both security and operational reliability.
 % Responsible: Lukas Krahbichler
 
 \subsection{Calibration}
 Calibration determines the relative positions and orientations of the ground stations, essential for accurate 3D drone tracking. Unlike competitors who use GNSS with RTK, this system aims to achieve similar precision through a more cost-effective and fully local approach. 
 
-The calibration hardware, integrated onto a custom PCB, could include:
+The calibration hardware, integrated onto a custom \acrfull{pcb}, could include:
 \begin{itemize}
 	\item Power Delivery
 	\item Time-of-Flight (ToF) Laser
@@ -37,7 +37,7 @@ The calibration hardware, integrated onto a custom PCB, could include:
 	\item Microcontroller
 \end{itemize}
 
-During calibration, approximate directions could be determined using the communication system, supplemented by precise distance measurements from the ToF laser. These measurements define the relative positions and angles of the stations, forming the foundation for accurate drone tracking.
+During calibration, approximate directions could be determined using the communication system, supplemented by precise distance measurements from the ToF laser.
 
 
 \section{Housing}
@@ -52,6 +52,14 @@ The initial proposition of the housing focused on following principles:
 % Responsible: Prantl Niclas
 
 \section{Programming}
+
+\subsection{Development Environment}
+
+A containerized Debian-based development environment is proposed to standardize dependencies and prevent system-specific issues.
+
+\subsection{Hardware Drivers}
+
+The software should be structured to efficiently manage hardware responsibilities.
 
 \subsection{Calibration}
 % Responsible: Lukas Krahbichler
