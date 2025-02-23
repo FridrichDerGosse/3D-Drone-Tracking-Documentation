@@ -54,8 +54,9 @@
 
 %% ... it's OK to put here your own usepackage commands ...
 
-
-
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{wrapfig}
 
 %% ========================================================================
 %%%% MISC self-defined commands and settings
@@ -63,7 +64,35 @@
 
 %% ... it's OK to put here your own newcommand/newenvironment-definitions ...
 
+\lstdefinestyle{PythonStyle}{
+	tabsize=4,
+	language=Python,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blue}\bfseries,
+	stringstyle=\color{red},
+	commentstyle=\color{gray},
+	numberstyle=\tiny\color{gray},
+	numbers=left,
+	stepnumber=1,
+	showstringspaces=false,
+	breaklines=true,
+	frame=single
+}
 
+\lstdefinestyle{CppStyle}{
+	tabsize=4,
+	language=C++,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{purple}\bfseries,
+	stringstyle=\color{orange},
+	commentstyle=\color{gray},
+	numberstyle=\tiny\color{gray},
+	numbers=left,
+	stepnumber=1,
+	showstringspaces=false,
+	breaklines=true,
+	frame=single
+}
 
 
 
@@ -141,7 +170,7 @@
 
 \input{content/solution_idea} 
 
-\input{content/solution} 
+\input{content/solution}
  
 \input{content/conclusion}
 
@@ -151,8 +180,6 @@
 \appendix                       %% closes main document, appendix follows until end; only available in book-classes
 
 \addpart*{Appendix}             %% adding Appendix to tableofcontents
-
-\printglossary
 
 \listoftables
 \listoffigures
