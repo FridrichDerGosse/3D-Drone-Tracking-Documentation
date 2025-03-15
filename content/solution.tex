@@ -8,7 +8,7 @@
 Several single-board computers were evaluated for this project:
 
 \begin{itemize}
-	\item \textbf{NVIDIA Jetson Nano:} Offers strong AI capabilities but is more expensive and exceeds project requirements \cite{nvidia_jetson_nano}.
+	\item \textbf{NVIDIA Jetson Nano:} Offers strong \acrshort{ai} capabilities but is more expensive and exceeds project requirements \cite{nvidia_jetson_nano}.
 	\item \textbf{ASUS Tinker Board S:} Affordable but lacks sufficient computational power for real-time image processing \cite{asus_tinkerboard_s}.
 	\item \textbf{ArmSom Sige7 (Basic):} Balances affordability and performance, supporting necessary image processing tasks \cite{armsom_sige7}.
 	\item \textbf{Raspberry Pi 4 Model B (8GB):} Well-supported but has less processing power for image processing compared to other options \cite{raspberry_pi_4b}.
@@ -30,12 +30,12 @@ Initially, a 10.1-inch Full HD display from ArmSom \cite{armsom_display} was int
 
 The chosen power supply was a PD 100 W, 20,000mAh power bank from POWERADD PRO \cite{poweradd_pro_powerbank}. This model met the project's technical requirements as follows:
 \begin{itemize}
-	\item It supports USB-PD, essential for powering the ArmSom Sige7 \cite{armsom_sige7}.
+	\item It supports Universal Serial Bus Power Delivery (USB-PD), essential for powering the ArmSom Sige7 \cite{armsom_sige7}.
 	\item Its 100W output ensures compatibility with all connected components, including the \acrshort{pcb}.
 	\item It has three ports, enabling simultaneous connections for the ArmSom board, the \acrshort{pcb}, and charging functionality.
 \end{itemize}
 
-Despite meeting these specifications, several issues arose during use. The power bank exhibited unpredictable behavior, intermittently cycling on and off. While this occurred less frequently when the power bank was fully or nearly fully charged, the problem was never completely resolved. Additionally, unexpected voltage drops were observed on the \acrshort{pcb}, with measurements showing 3.6V instead of the expected 5V from the USB output. This raised concerns about power stability and its impact on system reliability. Furthermore, it is highly likely that one of the ArmSom computers failed due to unstable voltage levels or power spikes originating from the power bank, though this could not be definitively confirmed.
+Despite meeting these specifications, several issues arose during use. The power bank exhibited unpredictable behavior, intermittently cycling on and off. While this occurred less frequently when the power bank was fully or nearly fully charged, the problem was never completely resolved. Additionally, unexpected voltage drops were observed on the \acrshort{pcb}, with measurements showing 3.6V instead of the expected 5V from the \acrfull{usb} output. This raised concerns about power stability and its impact on system reliability. Furthermore, it is highly likely that one of the ArmSom computers failed due to unstable voltage levels or power spikes originating from the power bank, though this could not be definitively confirmed.
 
 Additionally, with this setup, the station has two start buttons: one for the power bank and one for the ArmSom.
 
@@ -49,7 +49,7 @@ During testing, the mesh network continued to exhibit failures or functioned onl
 
 \subsection{Calibration}
 
-The calibration hardware ensures precise alignment and positioning of the primary and secondary stations for 3D tracking. Each station features a rotatable head for pitch and yaw adjustments, while roll is compensated via gyroscope measurements. Secondary stations share the same design for simplicity, but only the primary station includes a Time-of-Flight (ToF) laser for precise distance measurement. Secondary stations rely on camera-based alignment.
+The calibration hardware ensures precise alignment and positioning of the primary and secondary stations for \acrshort{3d} tracking. Each station features a rotatable head for pitch and yaw adjustments, while roll is compensated via gyroscope measurements. Secondary stations share the same design for simplicity, but only the primary station includes a \acrshort{tof} laser for precise distance measurement. Secondary stations rely on camera-based alignment.
 
 \subsubsection*{Components and Functionality}
 
@@ -58,18 +58,18 @@ The system uses compact 28BYJ-48 stepper motors controlled via ULN2003 driver bo
 
 \paragraph{Gyroscope and Compass:}
 
-Initially, we attempted to use a \textbf{9DOF sensor module} \citep{jwbl_dof_sensor} that integrated a 3-axis 12-bit accelerometer, a 3-axis earth magnet sensor, and a 3-axis 16-bit gyroscope. However, the gyroscope did not function at all, while the accelerometer and magnetometer failed to provide correct data. The earth magnet sensor, in particular, delivered inconsistent readings, fluctuating significantly between measurements and rendering it unreliable for absolute orientation.
+Initially, we attempted to use a \textbf{9DoF sensor module} \citep{jwbl_dof_sensor} that integrated a 3-axis 12-bit accelerometer, a 3-axis earth magnet sensor, and a 3-axis 16-bit gyroscope. However, the gyroscope did not function at all, while the accelerometer and magnetometer failed to provide correct data. The earth magnet sensor, in particular, delivered inconsistent readings, fluctuating significantly between measurements and rendering it unreliable for absolute orientation.
 
 As a result, we switched to a \textbf{GY-521 gyroscope} \cite{azdelivery_gy_521}, which provides 6-axis data for tilt measurement and alignment correction. Additionally, a \textbf{GY-271 compass} \cite{azdelivery_gy_271} was initially included for absolute orientation but was later abandoned due to unreliable calibration and inconsistent results. The compass remains on the \acrshort{pcb} but is not actively used in the system.
 
 \paragraph{ToF Laser Module:}
-The primary station features a DFRobot Infrared Laser Distance Sensor \cite{dfrobot_ir_sensor} with a 5 cm to 80 m range and millimeter-level accuracy. It is used for precise distance measurements and requires an unobstructed line of sight between the stations.
+The primary station features a DFRobot Infrared Laser Distance Sensor \cite{dfrobot_ir_sensor} with a 5 centimeters to 80 meters range and millimeter-level accuracy. It is used for precise distance measurements and requires an unobstructed line of sight between the stations.
 
 \paragraph{Camera for Visual Alignment:}
-Each station’s 4K camera \cite{armsom_camera_module} identifies and aligns with other stations during calibration. The cameras should track the bright orange secondary stations for positioning, replacing the originally planned but unreliable radio-based direction-finding approach with LoRa-Modules \cite{tecnoio_lora_modules}.
+Each station’s 4K camera \cite{armsom_camera_module} identifies and aligns with other stations during calibration. The cameras should track the bright orange secondary stations for positioning, replacing the originally planned but unreliable radio-based direction-finding approach with Long Range (LoRa) modules \cite{tecnoio_lora_modules}.
 
 \paragraph{Calibration \acrshort{pcb}:}
-The calibration system relies on a custom-designed \acrshort{pcb} to integrate various components necessary for precise positioning and alignment. The \acrshort{pcb} was designed using \textbf{Altium Designer 22} \cite{altium_designer_22}, with components sourced from \textbf{DigiKey} \cite{digikey} and the board itself manufactured by \textbf{JLCPCB} \cite{jlcpcb}. Assembly was completed both in the school’s workshop and at home, with components manually soldered.
+The calibration system relies on a custom-designed \acrshort{pcb} to integrate various components necessary for precise positioning and alignment. The \acrshort{pcb} was designed using \textbf{Altium Designer 22.11.1} \cite{altium_designer_22}, with components sourced from \textbf{DigiKey} \cite{digikey} and the board itself manufactured by \textbf{JLCPCB} \cite{jlcpcb}. Assembly was completed both in the school’s workshop and at home, with components manually soldered.
 
 The \acrshort{pcb} incorporates an \textbf{Arduino Nano} manufactured by DFRobot \cite{arduino_nano_dfrobot} as the main microcontroller. However, during development, we encountered program storage limitations, restricting the complexity of the firmware. In hindsight, selecting a microcontroller with more program storage, such as the \textbf{Arduino Uno}, would have provided more flexibility and prevented these constraints.
 
@@ -77,16 +77,16 @@ The \acrshort{pcb} incorporates an \textbf{Arduino Nano} manufactured by DFRobot
 \begin{itemize}
 	\item Provides power distribution to the calibration components.
 	\item Interfaces with the stepper motor drivers for head rotation control.
-	\item Integrates the gyroscope, compass, and ToF laser module.
-	\item Facilitates LED indicators for status feedback.
+	\item Integrates the gyroscope, compass, and \acrshort{tof} laser module.
+	\item Facilitates Light Emitting Diode (LED) indicators for status feedback.
 \end{itemize}
 
 \textbf{Issues Encountered During Development:}
 \begin{itemize}
-	\item The \textbf{USB input connector} was never soldered because the cable would not fit inside the housing. Instead, wires were directly soldered to the board.
+	\item The \textbf{\acrshort{usb} input connector} was never soldered because the cable would not fit inside the housing. Instead, wires were directly soldered to the board.
 	\item The \textbf{Arduino orientation} was incorrect in the Altium design, resulting in the microcontroller being mounted in the opposite direction than originally planned. This led to changes in cable management in the housing design.
 	\item The \textbf{LED on/off switching functionality} did not work as intended, requiring two additional manual connections to be made on each \acrshort{pcb}.
-	\item The \textbf{Communication between the Arduino Nano \cite{arduino_nano_dfrobot} and the ArmSom Sige7 \cite{armsom_sige7}} was initially planned via I2C. However, this did not work as expected. After unsuccessful troubleshooting attempts, we switched to UART communication. This change caused issues with the camera, as both systems could not run simultaneously. Ultimately, we resolved this by using a direct USB connection, running a cable from a USB-A port on the ArmSom board to the Micro-USB port on the Arduino Nano.
+	\item The \textbf{Communication between the Arduino Nano \cite{arduino_nano_dfrobot} and the ArmSom Sige7 \cite{armsom_sige7}} was initially planned via Inter-Integrated Circuit (I2C). However, this did not work as expected. After unsuccessful troubleshooting attempts, we switched to UART communication. This change caused issues with the camera, as both systems could not run simultaneously. Ultimately, we resolved this by using a direct \acrshort{usb} connection, running a cable from a \acrshort{usb}-A port on the ArmSom board to the Micro-\acrshort{usb} port on the Arduino Nano.
 \end{itemize}
 
 Despite these issues, the \acrshort{pcb} successfully serves as the central interface for calibration hardware, integrating all necessary sensors and controllers to facilitate the calibration process.
@@ -108,7 +108,7 @@ As final hardware selections were made, modifications were required to ensure a 
 To facilitate maintenance and future modifications, internal components needed to be more easily accessible. Several design refinements were implemented, including repositioning mounting points, enlarging access openings for connectors, and improving ventilation. These changes simplified servicing and upgrades, reducing downtime and enhancing long-term usability.  
 
 \paragraph{Simplified Assembly and Structural Refinements}  
-Initial prototypes were complex and time-consuming to assemble. To address this, the design was incrementally refined to minimize the number of assembly steps and reduce the likelihood of errors. Additionally, the housing was structured as a modular system, consisting of multiple interlocking parts. This approach optimized printability within standard 3D printing constraints while also enhancing maintainability, as individual sections could be replaced or upgraded without requiring a complete reprint.  
+Initial prototypes were complex and time-consuming to assemble. To address this, the design was incrementally refined to minimize the number of assembly steps and reduce the likelihood of errors. Additionally, the housing was structured as a modular system, consisting of multiple interlocking parts. This approach optimized printability within standard \acrshort{3d} printing constraints while also enhancing maintainability, as individual sections could be replaced or upgraded without requiring a complete reprint.  
 
 \paragraph{Key Design Challenges and Iterative Improvements}  
 Throughout development, several specific design challenges emerged, necessitating further refinements:  
@@ -163,16 +163,16 @@ By incorporating these refinements, the second housing version achieved a signif
 
 \subsection{3D Printing Process}  
 
-The housing components were fabricated using a \textbf{Bambu Lab P1S} 3D printer, chosen for its high-speed printing capabilities and reliable output quality. The material selection varied throughout the development phase to balance rapid prototyping needs with long-term durability requirements.  
+The housing components were fabricated using a \textbf{Bambu Lab P1S} \acrshort{3d} printer, chosen for its high-speed printing capabilities and reliable output quality. The material selection varied throughout the development phase to balance rapid prototyping needs with long-term durability requirements.  
 
 \paragraph{Prototyping with PLA}  
-During the initial prototyping stage, \textbf{PLA} was used due to its ease of printing and fast turnaround time. This enabled rapid iteration and testing of design modifications without significant material costs. However, PLA's mechanical properties and limited environmental resistance made it unsuitable for the final application.  
+During the initial prototyping stage, \textbf{\acrfull{pla}} was used due to its ease of printing and fast turnaround time. This enabled rapid iteration and testing of design modifications without significant material costs. However, \acrshort{pla}'s mechanical properties and limited environmental resistance made it unsuitable for the final application.  
 
 \paragraph{Final Production with PETG}  
-For the final version, \textbf{PETG} was selected due to its superior durability, higher temperature resistance, and suitability for outdoor conditions. Unlike PLA, PETG offers improved impact resistance and reduced brittleness, ensuring a more robust enclosure for long-term use.  
+For the final version, \textbf{\acrfull{petg}} was selected due to its superior durability, higher temperature resistance, and suitability for outdoor conditions. Unlike \acrshort{pla}, \acrshort{petg} offers improved impact resistance and reduced brittleness, ensuring a more robust enclosure for long-term use.  
 
 \paragraph{Considerations for Printing with PETG}  
-Although PETG generally requires longer print times and careful tuning compared to PLA, the use of \textbf{High-Flow (HF)} filament allowed for efficient production without a significant increase in cost or time. To ensure optimal print quality, PETG filament was dried for \textbf{eight hours} in a filament dryer before printing. This step was necessary to prevent moisture absorption, which can negatively impact layer adhesion and overall print strength.  
+Although \acrshort{petg} generally requires longer print times and careful tuning compared to \acrshort{pla}, the use of \textbf{High-Flow (HF)} filament allowed for efficient production without a significant increase in cost or time. To ensure optimal print quality, \acrshort{petg} filament was dried for \textbf{eight hours} in a filament dryer before printing. This step was necessary to prevent moisture absorption, which can negatively impact layer adhesion and overall print strength.  
 
 By leveraging the strengths of both materials at different development stages, the housing design was iteratively refined while maintaining efficiency in the fabrication process.
 
@@ -208,8 +208,8 @@ A significant portion of the software development effort was dedicated to implem
 	\item \textbf{Arduino Nano}
 	\begin{itemize}
 		\item RF24 Mesh networking
-		\item PWM-based fan control
-		\item Time-of-Flight (TOF) laser module
+		\item \acrfull{pwm}-based fan control
+		\item \acrshort{tof} laser module
 		\item Compass and gyroscope integration
 		\item Communication with the Armsom
 	\end{itemize}
@@ -233,10 +233,10 @@ The Arduino Nano is responsible for handling auxiliary hardware tasks and serves
 The RF24 Mesh protocol provides reliable wireless communication between ground stations. The implementation ensures efficient data transfer and message routing across the mesh network. For further details, refer to Section~\ref{subsec:DataTransfer}.
 
 \subparagraph{PWM Fan Control}
-A simple pulse-width modulation (PWM) control system is used to regulate the cooling fan speed. The fan is controlled via a single PWM pin, enabling dynamic adjustments based on temperature or other system conditions.
+A simple \acrshort{pwm} control system is used to regulate the cooling fan speed. The fan is controlled via a single PWM pin, enabling dynamic adjustments based on temperature or other system conditions.
 
-\subparagraph{Time-of-Flight (TOF) Laser}
-The TOF laser module is responsible for distance measurements station alignment. A custom serial-based communication interface was developed due to limitations in existing libraries, providing additional functionalities such as:
+\subparagraph{ToF Laser}
+The \acrshort{tof} laser module is responsible for distance measurements station alignment. A custom serial-based communication interface was developed due to limitations in existing libraries, providing additional functionalities such as:
 \begin{itemize}
 	\item Checksum validation for data integrity.
 	\item Adjustable range and resolution settings.
@@ -248,7 +248,7 @@ The TOF laser module is responsible for distance measurements station alignment.
 A dedicated serial communication link between the Arduino Nano and the Armsom allows efficient data exchange. Key features of this communication system include:
 \begin{itemize}
 	\item Buffered message storage for incoming network data until requested by the Armsom.
-	\item Memory-efficient design to account for the Nano’s limited RAM capacity.
+	\item Memory-efficient design to account for the Nano’s limited random access memory (RAM) capacity.
 	\item Integrated debugging capabilities, enabling the Nano to send diagnostic data to the Armsom’s command-line interface (CLI).
 \end{itemize}
 
@@ -259,8 +259,12 @@ This modular hardware driver implementation ensures stable, reliable, and mainta
 \subsection{Calibration}
 % Responsible: Lukas Krahbichler
 
+The calibration process was only implemented in a basic form. Only tests were made, where the relative positions of the stations had to be manually input by the user, after which the laser was used to measure distances. Due to a critical hardware failure, further development towards automation was not possible. While the conceptual framework was outlined, practical validation and refinement beyond manual calibration could not be completed.
+
 \subsection{Camera Tracking}
 % Responsible: Lukas Krahbichler
+
+The implementation of the camera tracking system progressed to the conceptual and initial development stages. The approach described in the solution idea was outlined, and preliminary considerations were made regarding tracking accuracy and computational feasibility. However, due to hardware constraints, further refinement and real-world validation could not be completed within the project's timeframe.
 
 \newpage
 \begin{figure}[H]
@@ -270,7 +274,7 @@ This modular hardware driver implementation ensures stable, reliable, and mainta
 		\raggedright % Aligns text to the left
 		\paragraph{Protocol Overview:}
 		
-		To ensure reliable and efficient data transmission, a structured JSON-based communication protocol was developed. Each message is encapsulated in a \textbf{parent message}, containing a type, unique ID, and timestamp. The message type can be one of the following:
+		To ensure reliable and efficient data transmission, a structured JSON-based communication protocol was developed. Each message is encapsulated in a \textbf{parent message}, containing a type, unique \acrfull{id}, and timestamp. The message type can be one of the following:
 		
 		\begin{itemize}
 			\item \textbf{req} – Requests information or an action.
@@ -282,8 +286,8 @@ This modular hardware driver implementation ensures stable, reliable, and mainta
 		with each message type having a specified schema. In case the message type is \textbf{data}, it can be further separated in:
 		
 		\begin{itemize}
-			\item \textbf{Target Result (tres)}: Contains object tracking data, including camera angles and object IDs.
-			\item \textbf{3D Target Result (tres3)}: Extends \textbf{tres} with precise 3D position.
+			\item \textbf{Target Result (tres)}: Contains object tracking data, including camera angles and object \acrshort{id}s.
+			\item \textbf{\acrshort{3d} Target Result (tres3)}: Extends \textbf{tres} with precise \acrshort{3d} position.
 			\item \textbf{Station Information (sinf)}: Provides metadata on ground stations, including position, direction, and camera specifications.
 		\end{itemize}
 		
@@ -341,7 +345,7 @@ The Broyden–Fletcher–Goldfarb–Shanno (BFGS) algorithm is an iterative meth
 
 \hspace*{-1.2cm}
 
-\begin{lstlisting}[style=PythonStyle]
+\begin{lstlisting}[caption={Example of 3D Angle Calculation}, label={lst:exampleCalculation}, style=PythonStyle]
 lines: list[tuple[np.array, np.array]] = ...
 
 
@@ -377,7 +381,7 @@ result = minimize(
 As shown in the illustration above, when given three lines in random orientations, the algorithm successfully identifies their center. Testing revealed that the code executes in approximately 400 to 600 µs, which is more than fast enough for our use case.
 
 \paragraph{Tracking}
-To enhance target tracking, each identified object is assigned a unique 'track ID,' which allows it to be consistently identified at any given time. Additionally, every calculated position of the object is recorded throughout its movement. This comprehensive data logging makes it possible to fully reconstruct the object's flight path, providing a detailed history of its trajectory and enabling further analysis if needed.
+To enhance target tracking, each identified object is assigned a unique 'track \acrshort{id},' which allows it to be consistently identified at any given time. Additionally, every calculated position of the object is recorded throughout its movement. This comprehensive data logging makes it possible to fully reconstruct the object's flight path, providing a detailed history of its trajectory and enabling further analysis if needed.
 
 % Responsible: Prantl Niclas
 
@@ -399,6 +403,6 @@ The refined protocol structure enables the efficient transmission of tracking an
 \end{figure}
 
 \paragraph{Rendering Engine}
-Given that the 3D tracking component was already developed in Python, it was a logical decision to implement the visualization system in Python as well to maintain consistency and streamline integration. For this purpose, I selected \textbf{Ursina}, a lightweight yet powerful 3D rendering engine designed for Python. My prior experience with \textbf{Ursina} further reinforced this choice, as it enables the efficient rendering of simple 3D models with minimal development overhead. Its intuitive API and ease of use makes it well-suited for rapidly prototyping and displaying real-time visualizations while ensuring smooth performance.
+Given that the \acrshort{3d} tracking component was already developed in Python, it was a logical decision to implement the visualization system in Python as well to maintain consistency and streamline integration. For this purpose, I selected \textbf{Ursina}, a lightweight yet powerful \acrfull{3d} rendering engine designed for Python. My prior experience with \textbf{Ursina} further reinforced this choice, as it enables the efficient rendering of simple \acrshort{3d} models with minimal development overhead. Its intuitive API and ease of use makes it well-suited for rapidly prototyping and displaying real-time visualizations while ensuring smooth performance.
 
 % Responsible: Prantl Niclas

@@ -1,6 +1,10 @@
 \chapter{Introduction}
 
-...
+This diploma thesis focuses on developing a ground-based 3D drone-tracking system that avoids the need for specialized onboard hardware. By combining three calibrated stations with local image processing, the system aims to provide a cost-effective alternative for operators who prefer not to modify standard drones. The core research question is whether such a fully ground-based setup can deliver reliable positional data without raising the complexity or expense of each aircraft.
+
+Our motivation arises from an interest in aerial systems and tracking technologies, particularly in settings where budget constraints limit the viability of advanced equipment. By integrating custom hardware design, minimal calibration procedures, and flexible software solutions, we intend to create a practical infrastructure for various applications.
+
+The thesis is organized as follows: “Detailed Task Description” clarifies specific objectives, responsibilities, and deliverables, defining the scope of work. “State of the Art: Market Analysis” then reviews existing commercial and research-based drone-tracking methods, underlining opportunities for cost savings and technical advantages. Next, the “Solution Idea” describes planned hardware, calibration, and networking strategies. The “Solution” chapter discusses practical implementation steps, including prototype testing and preliminary findings. Finally, the "Conclusion" discusses remaining limitations, and proposes directions for future enhancement.
 
 \section{Detailed Task Description}
 
@@ -12,7 +16,7 @@ Main goal: Track drones with multiple ground stations
 
 \textbf{Responsible:} Krahbichler Lukas
 
-Select hardware capable of efficiently handling the required image processing and running the 3D-GUI.
+Select hardware capable of efficiently handling the required image processing and running the \acrfull{3d}-Visualization.
 
 \subsubsection{Camera} % This heading is not Tracking because we chose to use a camera for tracking in advance
 
@@ -64,11 +68,11 @@ Ensure a consistent and efficient development setup.
 
 Develop a modular and reliable driver system.
 
-\subsubsection{3D Angle Calculations}
+\subsubsection{Calibration}
 
-\textbf{Responsible:} Prantl Niclas
+\textbf{Responsible:} Krahbichler Lukas
 
-Develop algorithms to calculate drone positions based on data from the stations.
+Create software to perform calibration procedures, accurately calculating relative positions and rotations of the stations.
 
 \subsubsection{Camera Tracking}
 
@@ -82,14 +86,14 @@ Implement software to track drones within the camera's output stream.
 
 Develop and implement a system to synchronize data transfer from secondary stations to the main station.
 
-\subsubsection{Calibration}
+\subsubsection{3D Angle Calculations}
 
-\textbf{Responsible:} Krahbichler Lukas
+\textbf{Responsible:} Prantl Niclas
 
-Create software to perform calibration procedures, accurately calculating relative positions and rotations of the stations.
+Develop algorithms to calculate drone positions based on data from the stations.
 
 \subsubsection{3D Visualization}
 
 \textbf{Responsible:} Prantl Niclas
 
-Program a 3D visualization interface to display tracked drones, integrating data from all stations.
+Program a \acrshort{3d} visualization interface to display tracked drones, integrating data from all stations.

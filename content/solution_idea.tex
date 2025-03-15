@@ -23,21 +23,21 @@ The idea is to implement local radio communication as the primary data transfer 
 % Responsible: Lukas Krahbichler
 
 \subsection{Calibration}
-Calibration determines the relative positions and orientations of the ground stations, essential for accurate 3D drone tracking. Unlike competitors who use GNSS with RTK, this system aims to achieve similar precision through a more cost-effective and fully local approach. 
+Calibration determines the relative positions and orientations of the ground stations, essential for accurate \acrshort{3d} drone tracking. Unlike competitors who use \acrshort{gnss} with \acrshort{rtk}, this system aims to achieve similar precision through a more cost-effective and fully local approach. 
 
 The calibration hardware, integrated onto a custom \acrfull{pcb}, could include:
 \begin{itemize}
 	\item Power Delivery
-	\item Time-of-Flight (ToF) Laser
+	\item \acrfull{tof} Laser
 	\item Communication modules
 	\item Stepper motors
 	\item Servo motors
-	\item Gyroscope/Magnetometer/Accelerometer (9DOF)
+	\item Gyroscope/Magnetometer/Accelerometer (9 Degrees of Freedom (9DoF))
 	\item End switches
 	\item Microcontroller
 \end{itemize}
 
-During calibration, approximate directions could be determined using the communication system, supplemented by precise distance measurements from the ToF laser.
+During calibration, approximate directions could be determined using the communication system, supplemented by precise distance measurements from the \acrshort{tof} laser.
 
 
 \section{Housing}
@@ -64,14 +64,17 @@ The software should be structured to efficiently manage hardware responsibilitie
 \subsection{Calibration}
 % Responsible: Lukas Krahbichler
 
+The calibration process is intended to determine the relative positions and orientations of the ground stations. The calibration hardware will be used for measurements.
+
 \subsection{Camera Tracking}
-Being the key element in this project, the cameras should be able to detect and track drones mid air and calculate their relative angle to the ground station. By already knowing the angle the camera is facing, this can be done by reversing the fish-eye effect of the camera and then multiplying the relative x and y position in the image by the cameras FOV.
+Being the key element in this project, the cameras should be able to detect and track drones mid air and calculate their relative angle to the ground station. By already knowing the angle the camera is facing, this can be done by reversing the fish-eye effect of the camera and then multiplying the relative x and y position in the image by the cameras field of view (FOV).
 
 % Responsible: Lukas Krahbichler
 
 \subsection{Data Transfer}
-
 % Responsible: Lukas Krahbichler
+
+The data transfer system enables communication between ground stations for synchronization and tracking. A structured protocol is required to ensure fast and reliable message transmission.
 
 \subsection{3D Angle Calculations}
 Having already calculated the relative angles for each ground station, the individual angles are being combined by using simple trigonometry. 

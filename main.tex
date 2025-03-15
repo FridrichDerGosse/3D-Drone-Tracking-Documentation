@@ -57,6 +57,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{wrapfig}
+\usepackage[acronym]{glossaries}
 
 %% ========================================================================
 %%%% MISC self-defined commands and settings
@@ -145,10 +146,12 @@
 
 %% include the abstract without chapter number but include it on table of contents:
 %%\let\cleardoublepage\clearpage
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Abstract}
-   
 \include{content/abstract}              %% Abstract
+
+
 \input{template/affirmation} %%EIDESSTATTLICHE ERKLÄRUNG  
 
 \tableofcontents                %% this produces the table of contents - you might have guessed :-)
@@ -174,16 +177,33 @@
  
 \input{content/conclusion}
 
+\input{content/acknowledgements}
+
 
 % \input{content/latex_beispiele} % 3D-Object-Tracking-Documentationfach auskommentieren für die tatsächliche Arbeit
 
-\appendix                       %% closes main document, appendix follows until end; only available in book-classes
-
-\addpart*{Appendix}             %% adding Appendix to tableofcontents
+\cleardoublepage
+\printnoidxglossary[type=acronym]
+\printacronyms
+\addcontentsline{toc}{chapter}{Acronyms}
 
 \listoftables
+\cleardoublepage
 \listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\cleardoublepage
 \lstlistoflistings
+\addcontentsline{toc}{chapter}{Listings}
+
+\cleardoublepage
+\appendix                       %% closes main document, appendix follows until end; only available in book-classes
+\input{content/appendix}
+ %\addpart*{Appendix}
+
+\addcontentsline{toc}{chapter}{Appendix}
+
+
 \nocite{*} %Es werden auf nicht referenzierte Literaturstellen aufgelistet
 \bibliography{references}
 
