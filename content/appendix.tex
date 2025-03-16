@@ -2,34 +2,34 @@
 
 \begin{table}[H]
 	\centering
-	\renewcommand{\arraystretch}{1.4} % Increase row spacing
-	\setlength{\tabcolsep}{8pt}      % Adjust column spacing
+	\renewcommand{\arraystretch}{1.4}
+	\setlength{\tabcolsep}{8pt}
 	\begin{tabular}{p{0.3\textwidth} p{0.65\textwidth}}
 		\hline
 		\textbf{Attachment} & \textbf{Description} \\
 		\hline
 		Hardware-Drivers (C++)
-		& Hardware interface drivers for each station, enabling control with sensors, motors, and calibration hardware.\\
+		& Hardware interface drivers for the station\\
 		
 		Arduino Nano Firmware (C++)
-		& Code running on the Arduino Nano to manage calibration routines, stepper/servo controls, and basic communication.\\
+		& Code running on the Arduino Nano\\
 		
-		Tracking-Software (Python
+		Tracking-Software (Python)
 		& Executed on the primary station to gather and combine data from all stations for drone position calculation.\\
 		
 		GUI (Python, Ursina)
-		& Three-dimensional visualization interface that renders the ground stations and tracked drone positions in real time.\\
+		& Three-dimensional visualization interface that renders the ground stations and tracked drone positions.\\
 		
 		Python-Tools
 		& Common libraries and modules containing shared data types, vector operations, and support functions for both tracking and visualization.\\
 		
 		PCB (Altium/Gerber)
-		& Complete Altium Designer project files and Gerber exports for manufacturing the custom PCB.\\
+		& Altium Designer project files and Gerber exports for manufacturing the custom PCB.\\
 		
-		Housing STLs
-		& Three-dimensional model files (\texttt{.stl}) for printing the station enclosures and adjustable camera mounts.\\
+		Housing (STLs)
+		& 3D model files of the stations\\
 		
-		Mind Map (PDF/Image)
+		Mind Map (PDF)
 		& Initial brainstorming document outlining project ideas and scope.\\
 		\hline
 	\end{tabular}

@@ -35,9 +35,9 @@ The chosen power supply was a PD 100 W, 20,000mAh power bank from POWERADD PRO \
 	\item It has three ports, enabling simultaneous connections for the ArmSom board, the \acrshort{pcb}, and charging functionality.
 \end{itemize}
 
-Despite meeting these specifications, several issues arose during use. The power bank exhibited unpredictable behavior, intermittently cycling on and off. While this occurred less frequently when the power bank was fully or nearly fully charged, the problem was never completely resolved. Additionally, unexpected voltage drops were observed on the \acrshort{pcb}, with measurements showing 3.6V instead of the expected 5V from the \acrfull{usb} output. This raised concerns about power stability and its impact on system reliability. Furthermore, it is highly likely that one of the ArmSom computers failed due to unstable voltage levels or power spikes originating from the power bank, though this could not be definitively confirmed.
+Despite meeting these specifications, several issues arose during use. The power bank exhibited unpredictable behavior, intermittently cycling on and off. While this occurred less frequently when the power bank was fully or nearly fully charged, the problem was never completely resolved. Additionally, unexpected voltage drops were observed on the \acrshort{pcb}, with measurements showing 3.6V instead of the expected 5V from the \acrfull{usb} output. This raised concerns about power stability and its impact on system reliability. Furthermore, it is highly likely that our ArmSom computer failed due to unstable voltage levels or power spikes originating from the power bank, though this could not be definitively confirmed.
 
-Additionally, with this setup, the station has two start buttons: one for the power bank and one for the ArmSom.
+Additionally, with this setup, the station has two start buttons - one for the power bank and one for the ArmSom - which is not particularly user-friendly.
 
 \subsection{Data Transfer}
 
@@ -54,7 +54,7 @@ The calibration hardware ensures precise alignment and positioning of the primar
 \subsubsection*{Components and Functionality}
 
 \paragraph{Rotatable Head (Pitch and Yaw Axes):}
-The system uses compact 28BYJ-48 stepper motors controlled via ULN2003 driver boards \cite{angeek_28byj_48}. End-switches from InduSKY \cite{indusky_microswitch}, configured in normally closed mode, detect faults like loose connections. Servos \cite{miuzei_servos} were initially considered but dismissed due to cost, size, and complexity.
+The system uses compact 28BYJ-48 stepper motors controlled via ULN2003 driver boards \cite{angeek_28byj_48}. The used end-switches from InduSKY \cite{indusky_microswitch} are configured in normally closed mode to detect faults like loose connections. Servos \cite{miuzei_servos} were initially considered but dismissed due to cost, size, and complexity.
 
 \paragraph{Gyroscope and Compass:}
 
@@ -68,10 +68,10 @@ The primary station features a DFRobot Infrared Laser Distance Sensor \cite{dfro
 \paragraph{Camera for Visual Alignment:}
 Each station’s 4K camera \cite{armsom_camera_module} identifies and aligns with other stations during calibration. The cameras should track the bright orange secondary stations for positioning, replacing the originally planned but unreliable radio-based direction-finding approach with Long Range (LoRa) modules \cite{tecnoio_lora_modules}.
 
-\paragraph{Calibration \acrshort{pcb}:}
-The calibration system relies on a custom-designed \acrshort{pcb} to integrate various components necessary for precise positioning and alignment. The \acrshort{pcb} was designed using \textbf{Altium Designer 22.11.1} \cite{altium_designer_22}, with components sourced from \textbf{DigiKey} \cite{digikey} and the board itself manufactured by \textbf{JLCPCB} \cite{jlcpcb}. Assembly was completed both in the school’s workshop and at home, with components manually soldered.
+\paragraph{\acrshort{pcb}:}
+The calibration system relies on a custom-designed \acrshort{pcb} to integrate various components necessary for precise positioning and alignment. The \acrshort{pcb} was designed using \textbf{Altium Designer 22.11.1} \cite{altium_designer_22}, with components sourced from \textbf{DigiKey} \cite{digikey} and the board itself manufactured by \textbf{JLCPCB} \cite{jlcpcb}. Assembly was completed both in the school’s workshop and at home.
 
-The \acrshort{pcb} incorporates an \textbf{Arduino Nano} manufactured by DFRobot \cite{arduino_nano_dfrobot} as the main microcontroller. However, during development, we encountered program storage limitations, restricting the complexity of the firmware. In hindsight, selecting a microcontroller with more program storage, such as the \textbf{Arduino Uno}, would have provided more flexibility and prevented these constraints.
+The \acrshort{pcb} incorporates an \textbf{Arduino Nano} by DFRobot \cite{arduino_nano_dfrobot} as the main microcontroller. However, during development, we encountered program storage limitations, restricting the complexity of the firmware. In hindsight, selecting a microcontroller with more program storage, such as the \textbf{Arduino Uno R3} \cite{arduino_uno_dfrobot}, would have provided more flexibility and prevented these constraints.
 
 \textbf{Key Functions of the \acrshort{pcb}:}
 \begin{itemize}
@@ -84,9 +84,9 @@ The \acrshort{pcb} incorporates an \textbf{Arduino Nano} manufactured by DFRobot
 \textbf{Issues Encountered During Development:}
 \begin{itemize}
 	\item The \textbf{\acrshort{usb} input connector} was never soldered because the cable would not fit inside the housing. Instead, wires were directly soldered to the board.
-	\item The \textbf{Arduino orientation} was incorrect in the Altium design, resulting in the microcontroller being mounted in the opposite direction than originally planned. This led to changes in cable management in the housing design.
+	\item The \textbf{Arduino orientation} was incorrect in Altium, resulting in the microcontroller being mounted in the opposite direction than originally planned. This led to changes in cable management in the housing design.
 	\item The \textbf{LED on/off switching functionality} did not work as intended, requiring two additional manual connections to be made on each \acrshort{pcb}.
-	\item The \textbf{Communication between the Arduino Nano \cite{arduino_nano_dfrobot} and the ArmSom Sige7 \cite{armsom_sige7}} was initially planned via Inter-Integrated Circuit (I2C). However, this did not work as expected. After unsuccessful troubleshooting attempts, we switched to UART communication. This change caused issues with the camera, as both systems could not run simultaneously. Ultimately, we resolved this by using a direct \acrshort{usb} connection, running a cable from a \acrshort{usb}-A port on the ArmSom board to the Micro-\acrshort{usb} port on the Arduino Nano.
+	\item The \textbf{Communication between the Arduino Nano \cite{arduino_nano_dfrobot} and the ArmSom Sige7 \cite{armsom_sige7}} was initially planned via Inter-Integrated Circuit (I2C). However, this did not work as expected. After unsuccessful troubleshooting attempts, we switched to Universal Asynchronous Receiver Transmitter (UART) communication. This change caused issues with the camera, as both systems could not run simultaneously. Ultimately, we resolved this by using a direct \acrshort{usb} connection, running a cable from a \acrshort{usb}-A port on the ArmSom board to the Micro-\acrshort{usb} port on the Arduino Nano.
 \end{itemize}
 
 Despite these issues, the \acrshort{pcb} successfully serves as the central interface for calibration hardware, integrating all necessary sensors and controllers to facilitate the calibration process.
@@ -259,7 +259,7 @@ This modular hardware driver implementation ensures stable, reliable, and mainta
 \subsection{Calibration}
 % Responsible: Lukas Krahbichler
 
-The calibration process was only implemented in a basic form. Only tests were made, where the relative positions of the stations had to be manually input by the user, after which the laser was used to measure distances. Due to a critical hardware failure, further development towards automation was not possible. While the conceptual framework was outlined, practical validation and refinement beyond manual calibration could not be completed.
+The calibration process was only implemented in a basic form. Only tests were made, where the relative positions of the stations had to be manually input by the user, after which the laser was used to measure distances. Due to our critical hardware failures, further development towards automation was not possible. While the conceptual framework was outlined, practical validation and refinement beyond manual calibration could not be completed.
 
 \subsection{Camera Tracking}
 % Responsible: Lukas Krahbichler

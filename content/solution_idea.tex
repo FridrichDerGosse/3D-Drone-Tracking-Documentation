@@ -7,15 +7,15 @@ The core idea is to perform image processing locally on each unit, thereby elimi
 % Responsible: Lukas Krahbichler
 
 \subsection{Camera}
-The selected camera must be compatible with the chosen single-board computer and provide high resolution to enable accurate tracking over greater distances. A 4K camera is proposed, as higher resolution theoretically extends the effective range of tracking. This choice balances precision and affordability, ensuring the system's effectiveness without unnecessary costs.
+The selected camera must be compatible with the chosen single-board computer. A 4K camera is proposed, as higher resolution theoretically extends the effective range of tracking. This choice balances precision and affordability, ensuring the system's effectiveness without unnecessary costs.
 % Responsible: Lukas Krahbichler
 
 \subsection{Display}
-The primary station will include a display for visualizing tracked drone data. The visualization is one of the system's primary goals and will be developed as part of the programming section. The parameters for the display, such as resolution (Full HD) and size (8 to 12 inches), were secondary considerations compared to compatibility and affordability. To reduce costs, the display will only be included in the primary station, ensuring that it provides sufficient functionality for monitoring without adding unnecessary expenses.
+The primary station will include a display for visualizing tracked drone data. The visualization is one of the system's primary goals and will be developed as part of the programming section. The parameters for the display, such as resolution (Full HD) and size (8 to 12 inches), are secondary considerations compared to compatibility and affordability. To reduce costs, the display will only be included in the primary station, ensuring that it provides sufficient functionality for monitoring without adding unnecessary expenses.
 % Responsible: Lukas Krahbichler
 
 \subsection{Power Supply}
-The proposed solution involves using an off-the-shelf power bank system to supply energy to all components, including the single-board computer, camera, display, and calibration hardware. This approach avoids the complexity of designing and building a custom battery management system, saving development time and effort. The power bank should have adequate output to power all components reliably and sufficient capacity to operate the system for a reasonable duration, although extended battery life is not a primary focus.
+The proposed solution involves using an off-the-shelf power bank system to supply energy to all components, including the single-board computer, camera, display, and calibration hardware. This approach avoids the complexity of designing and building a custom power supply, saving development time and effort. The power bank should have adequate output to power all components reliably and sufficient capacity to operate the system for a reasonable duration, although extended battery life is not a primary focus.
 % Responsible: Lukas Krahbichler
 
 \subsection{Data Transfer}
@@ -23,7 +23,7 @@ The idea is to implement local radio communication as the primary data transfer 
 % Responsible: Lukas Krahbichler
 
 \subsection{Calibration}
-Calibration determines the relative positions and orientations of the ground stations, essential for accurate \acrshort{3d} drone tracking. Unlike competitors who use \acrshort{gnss} with \acrshort{rtk}, this system aims to achieve similar precision through a more cost-effective and fully local approach. 
+Calibration determines the relative positions and orientations of the ground stations, essential for accurate \acrshort{3d} drone tracking. Unlike competitors who use \acrshort{gnss} with \acrshort{rtk}, our system aims to achieve similar precision through a more cost-effective and fully local approach. 
 
 The calibration hardware, integrated onto a custom \acrfull{pcb}, could include:
 \begin{itemize}
@@ -37,12 +37,12 @@ The calibration hardware, integrated onto a custom \acrfull{pcb}, could include:
 	\item Microcontroller
 \end{itemize}
 
-During calibration, approximate directions could be determined using the communication system, supplemented by precise distance measurements from the \acrshort{tof} laser.
+During calibration, approximate directions could be determined using the communication system, supplemented by precise distance measurements from a \acrshort{tof} laser.
 
 
 \section{Housing}
 
-The initial proposition of the housing focused on following principles:
+The initial proposition of the housing focuses on following principles:
 \begin{itemize}
 	\item Sturdiness
 	\item Size
@@ -74,7 +74,7 @@ Being the key element in this project, the cameras should be able to detect and 
 \subsection{Data Transfer}
 % Responsible: Lukas Krahbichler
 
-The data transfer system enables communication between ground stations for synchronization and tracking. A structured protocol is required to ensure fast and reliable message transmission.
+The data transfer system should enable communication between ground stations for synchronization and tracking. A structured protocol is proposed to ensure fast and reliable message transmission.
 
 \subsection{3D Angle Calculations}
 Having already calculated the relative angles for each ground station, the individual angles are being combined by using simple trigonometry. 
