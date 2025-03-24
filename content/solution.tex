@@ -20,7 +20,15 @@ In the end, this hardware failure was one of the main reasons the project was no
 
 \subsection{Camera}
 
-The camera module chosen was the 4K model from ArmSom \cite{armsom_camera_module}, specifically designed for seamless integration with the ArmSom Sige7 \cite{armsom_sige7}. This ensured full hardware compatibility and eliminated potential issues with third-party components. The module was selected for its high resolution, which allows for better tracking accuracy at greater distances. However, during testing, the camera initially produced very dark images. This was traced back to a driver issue, which was quickly resolved with support from the manufacturer.
+The camera module chosen is the 4K model from ArmSom \cite{armsom_camera_module} shown in \autoref{fig:armsomcamera}, specifically designed for seamless integration with the ArmSom Sige7 \cite{armsom_sige7}. This ensured full hardware compatibility and eliminated potential issues with third-party components. The module was selected for its high resolution of 4K, which allows for better tracking accuracy at greater distances. However, during testing, the camera initially produced very dark images. This was traced back to a driver issue, which was quickly resolved with support from the manufacturer.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{figures/armsom_camera}
+	\caption{ArmSom 4K camera integrated into a final secondary station.}
+	\source{Own photo}
+	\label{fig:armsomcamera}
+\end{figure}
 
 \subsection{Display}
 
@@ -28,14 +36,23 @@ Initially, a 10.1-inch Full HD display from ArmSom \cite{armsom_display} was int
 
 \subsection{Power Supply}
 
-The chosen power supply was a PD 100 W, 20,000mAh power bank from POWERADD PRO \cite{poweradd_pro_powerbank}. This model met the project's technical requirements as follows:
+The chosen power supply was a PD 100 W, 20.000mAh power bank from POWERADD PRO \cite{poweradd_pro_powerbank} with 3 \acrfull{usb} ports. This model met the project's technical requirements as follows:
 \begin{itemize}
-	\item It supports Universal Serial Bus Power Delivery (USB-PD), essential for powering the ArmSom Sige7 \cite{armsom_sige7}.
-	\item Its 100W output ensures compatibility with all connected components, including the \acrshort{pcb}.
-	\item It has three ports, enabling simultaneous connections for the ArmSom board, the \acrshort{pcb}, and charging functionality.
+	\item Its two USB-C ports support USB Power Delivery (USB-PD), essential for powering the ArmSom Sige7 \cite{armsom_sige7}. The ArmSom is connected to the top-left port, as seen in \autoref{fig:powerbank}.
+	\item Its 100W output ensures compatibility with all connected components, including the \acrshort{pcb}. The \acrshort{pcb} is connected to the USB-A port at the bottom left in \autoref{fig:powerbank}.
+	\item It has three ports, enabling simultaneous connections for the ArmSom board, the \acrshort{pcb}, and charging functionality via the unused USB-C port at the top right in \autoref{fig:powerbank}.
 \end{itemize}
 
-Despite meeting these specifications, several issues arose during use. The power bank exhibited unpredictable behavior, intermittently cycling on and off. While this occurred less frequently when the power bank was fully or nearly fully charged, the problem was never completely resolved. Additionally, unexpected voltage drops were observed on the \acrshort{pcb}, with measurements showing 3.6V instead of the expected 5V from the \acrfull{usb} output. This raised concerns about power stability and its impact on system reliability. Furthermore, it is highly likely that our ArmSom computer failed due to unstable voltage levels or power spikes originating from the power bank, though this could not be definitively confirmed.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{figures/powerbank}
+	\caption{Powerbank integrated into a final secondary station.}
+	\source{Own photo}
+	\label{fig:powerbank}
+\end{figure}
+
+Despite meeting these specifications, several issues arose during use. The power bank exhibited unpredictable behavior, intermittently cycling on and off. While this occurred less frequently when the power bank was fully or nearly fully charged, the problem was never completely resolved. Additionally, unexpected voltage drops were observed on the \acrshort{pcb}, with measurements showing 3.6V instead of the expected 5V from the \acrshort{usb} output. This raised concerns about power stability and its impact on system reliability. Furthermore, it is highly likely that our ArmSom computer failed due to unstable voltage levels or power spikes originating from the power bank, though this could not be definitively confirmed.
 
 Additionally, with this setup, the station has two start buttons - one for the power bank and one for the ArmSom - which is not particularly user-friendly.
 
@@ -44,6 +61,8 @@ Additionally, with this setup, the station has two start buttons - one for the p
 Initially, the NRF24L01 \cite{nRF24L01} modules with \acrshort{pcb} antennas were integrated directly onto the \acrshort{pcb} to enable local radio communication between stations. However, these modules proved unreliable in the required 3-node mesh system, frequently failing to maintain stable communication.
 
 To resolve this, the system was upgraded to NRF24L01+ PA + LNA \cite{nRF24L01_plus} modules with external antennas. This change improved signal strength but required modifications to the housing design to accommodate the larger modules. The \acrshort{pcb} remained unchanged due to the identical pinout, but the new modules were too large to be mounted directly. Instead, they had to be repositioned and connected via jumper cables.
+
+% TODO: Potential location of image of external antenna if no other spot is found
 
 During testing, the mesh network continued to exhibit failures or functioned only when antennas were placed in specific orientations. Further research indicated that the high transmission power of the new modules caused interference in close-range operation. Reducing the transmission power resolved these stability issues, allowing the modules to function reliably within the system.
 
@@ -65,11 +84,21 @@ As a result, we switched to a \textbf{GY-521 gyroscope} \cite{azdelivery_gy_521}
 \paragraph{ToF Laser Module:}
 The primary station features a DFRobot Infrared Laser Distance Sensor \cite{dfrobot_ir_sensor} with a 5 centimeters to 80 meters range and millimeter-level accuracy. It is used for precise distance measurements and requires an unobstructed line of sight between the stations.
 
+% TODO: potential image of toF laser
+
 \paragraph{Camera for Visual Alignment:}
 Each station’s 4K camera \cite{armsom_camera_module} identifies and aligns with other stations during calibration. The cameras should track the bright orange secondary stations for positioning, replacing the originally planned but unreliable radio-based direction-finding approach with Long Range (LoRa) modules \cite{tecnoio_lora_modules}.
 
 \paragraph{\acrshort{pcb}:}
-The calibration system relies on a custom-designed \acrshort{pcb} to integrate various components necessary for precise positioning and alignment. The \acrshort{pcb} was designed using \textbf{Altium Designer 22.11.1} \cite{altium_designer_22}, with components sourced from \textbf{DigiKey} \cite{digikey} and the board itself manufactured by \textbf{JLCPCB} \cite{jlcpcb}. Assembly was completed both in the school’s workshop and at home.
+The calibration system relies on our custom-designed \acrshort{pcb} seen in \autoref{pcb} to integrate various components necessary for precise positioning and alignment. The \acrshort{pcb} was designed using \textbf{Altium Designer 22.11.1} \cite{altium_designer_22}, with components sourced from \textbf{DigiKey} \cite{digikey} and the board itself manufactured by \textbf{JLCPCB} \cite{jlcpcb}. Assembly was completed both in the school’s workshop and at home.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{figures/pcb}
+	\caption{PCB integrated into the final secondary station with all connections except for the laser, which secondary stations do not have}
+	\source{Own photo}
+	\label{fig:pcb}
+\end{figure}
 
 The \acrshort{pcb} incorporates an \textbf{Arduino Nano} by DFRobot \cite{arduino_nano_dfrobot} as the main microcontroller. However, during development, we encountered program storage limitations, restricting the complexity of the firmware. In hindsight, selecting a microcontroller with more program storage, such as the \textbf{Arduino Uno R3} \cite{arduino_uno_dfrobot}, would have provided more flexibility and prevented these constraints.
 
@@ -83,8 +112,8 @@ The \acrshort{pcb} incorporates an \textbf{Arduino Nano} by DFRobot \cite{arduin
 
 \textbf{Issues Encountered During Development:}
 \begin{itemize}
-	\item The \textbf{\acrshort{usb} input connector} was never soldered because the cable would not fit inside the housing. Instead, wires were directly soldered to the board.
-	\item The \textbf{Arduino orientation} was incorrect in Altium, resulting in the microcontroller being mounted in the opposite direction than originally planned. This led to changes in cable management in the housing design.
+	\item The \textbf{\acrshort{usb} input connector} was never soldered, as the cable did not fit inside the housing. Instead, one red and one black wire were soldered directly to the board. In \autoref{fig:pcb}, they can be seen running from the back right of the PCB, around it, and down to the power bank at the front left.
+	\item The \textbf{Arduino orientation} in Altium was incorrect, causing the microcontroller to be mounted in the opposite direction than intended. As a result, cable management in the housing design had to be adjusted. This is visible in \autoref{fig:pcb}, where the microcontroller’s USB port faces right, whereas in the production documents it faces the opposite direction.
 	\item The \textbf{LED on/off switching functionality} did not work as intended, requiring two additional manual connections to be made on each \acrshort{pcb}.
 	\item The \textbf{Communication between the Arduino Nano \cite{arduino_nano_dfrobot} and the ArmSom Sige7 \cite{armsom_sige7}} was initially planned via Inter-Integrated Circuit (I2C). However, this did not work as expected. After unsuccessful troubleshooting attempts, we switched to Universal Asynchronous Receiver Transmitter (UART) communication. This change caused issues with the camera, as both systems could not run simultaneously. Ultimately, we resolved this by using a direct \acrshort{usb} connection, running a cable from a \acrshort{usb}-A port on the ArmSom board to the Micro-\acrshort{usb} port on the Arduino Nano.
 \end{itemize}
@@ -127,6 +156,14 @@ These continuous iterations and refinements allowed the first version of the hou
   
 \subsection{Second (Final) Version}
 Building upon the insights gained from the first housing iteration, the second version introduced several key improvements to enhance functionality, maintainability, and overall design efficiency.  
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{figures/old_and_new_station_comparison}
+	\caption{Comparison between first version (right) and final version (left)}
+	\source{Own picture}
+	\label{fig:oldandnewstationcomparison}
+\end{figure}
 
 \paragraph{Enhanced Modularity and Accessibility}  
 A major focus of the redesign was to improve modularity, simplifying both assembly and maintenance. The revised structure allows for more efficient disassembly, significantly reducing the time required for maintenance and hardware adjustments. Additionally, hardware accessibility was prioritized, ensuring that critical components could be reached without excessive disassembly.  
@@ -269,6 +306,15 @@ The implementation of the camera tracking system progressed to the conceptual an
 \newpage
 
 \subsection{Data Transfer}\label{subsec:DataTransfer}
+
+\begin{wrapfigure}[31]{r}{0.5\textwidth}
+	\centering
+	\vspace{-60pt} % adjust spacing as needed
+	\includegraphics[width=0.35\textwidth]{figures/SS_Protocol_Message}
+	\caption{Message Structure}
+	\source{Own illustration created with Draw.io}
+	\label{fig:ssprotocolmessage}
+\end{wrapfigure}
 
 
 \paragraph{Protocol Overview:}
