@@ -267,51 +267,39 @@ The calibration process was only implemented in a basic form. Only tests were ma
 The implementation of the camera tracking system progressed to the conceptual and initial development stages. The approach described in the solution idea was outlined, and preliminary considerations were made regarding tracking accuracy and computational feasibility. However, due to hardware constraints, further refinement and real-world validation could not be completed within the project's timeframe.
 
 \newpage
-\begin{figure}[H]
-	\subsection{Data Transfer} \label{subsec:DataTransfer}
-	\centering
-	\begin{minipage}{0.5\textwidth} % Text on the left
-		\raggedright % Aligns text to the left
-		\paragraph{Protocol Overview:}
-		
-		To ensure reliable and efficient data transmission, a structured JSON-based communication protocol was developed. Each message is encapsulated in a \textbf{parent message}, containing a type, unique \acrfull{id}, and timestamp. The message type can be one of the following:
-		
-		\begin{itemize}
-			\item \textbf{req} – Requests information or an action.
-			\item \textbf{ack} – Confirms successful execution of an action.
-			\item \textbf{repl} – Provides responses to requests.
-			\item \textbf{data} – Transmits tracking or station-related information.
-		\end{itemize}
-		
-		with each message type having a specified schema. In case the message type is \textbf{data}, it can be further separated in:
-		
-		\begin{itemize}
-			\item \textbf{Target Result (tres)}: Contains object tracking data, including camera angles and object \acrshort{id}s.
-			\item \textbf{\acrshort{3d} Target Result (tres3)}: Extends \textbf{tres} with precise \acrshort{3d} position.
-			\item \textbf{Station Information (sinf)}: Provides metadata on ground stations, including position, direction, and camera specifications.
-		\end{itemize}
-		
-		\paragraph{Protocol Advantages:} \
-	
-		The protocol ensures:
-		\begin{itemize}
-			\item \textbf{Efficiency}: Predefined schemas enable fast parsing and low-latency communication.
-			\item \textbf{Scalability}: The modular design allows for future extensions.
-			\item \textbf{Reliability}: The acknowledgment system provides valuable feedback for error handling.
-		\end{itemize}
-		
-		This structured approach enables seamless coordination between ground stations, visualization tools, and tracking algorithms.
-		
-	\end{minipage}%
-	\hfill
-	\begin{minipage}{0.38\textwidth} % Image on the right
-		\centering
-		\includegraphics[width=\textwidth]{figures/SS_Protocol_Message}
-		\caption{Message Structure}
-		\source{Own illustration created with Draw.io}
-		\label{fig:ssprotocolmessage}
-	\end{minipage}
-\end{figure}
+
+\subsection{Data Transfer}\label{subsec:DataTransfer}
+
+
+\paragraph{Protocol Overview:}
+
+To ensure reliable and efficient data transmission, a structured JSON-based communication protocol was developed. Each message is encapsulated in a \textbf{parent message}, containing a type, unique \acrfull{id}, and timestamp. The message type can be one of the following:
+
+\begin{itemize}
+	\item \textbf{req} – Requests information or an action.
+	\item \textbf{ack} – Confirms successful execution of an action.
+	\item \textbf{repl} – Provides responses to requests.
+	\item \textbf{data} – Transmits tracking or station-related information.
+\end{itemize}
+
+With each message type having a specified schema. In case the message type is \textbf{data}, it can be further separated in:
+
+\begin{itemize}
+	\item \textbf{Target Result (tres)}: Contains object tracking data, including camera angles and object \acrshort{id}s.
+	\item \textbf{\acrshort{3d} Target Result (tres3)}: Extends \textbf{tres} with precise \acrshort{3d} position.
+	\item \textbf{Station Information (sinf)}: Provides metadata on ground stations, including position, direction, and camera specifications.
+\end{itemize}
+
+\paragraph{Protocol Advantages:}
+
+The protocol ensures:
+\begin{itemize}
+	\item \textbf{Efficiency}: Predefined schemas enable fast parsing and low-latency communication.
+	\item \textbf{Scalability}: The modular design allows for future extensions.
+	\item \textbf{Reliability}: The acknowledgment system provides valuable feedback for error handling.
+\end{itemize}
+
+This structured approach enables seamless coordination between ground stations, visualization tools, and tracking algorithms.
 
 \paragraph{Theoretical Solution:}  
 To establish a robust and efficient communication framework, all three ground stations are integrated into a \textbf{Mesh network}, where the \textbf{primary station} assumes the role of the central server, while the \textbf{secondary stations} operate as clients.
