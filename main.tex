@@ -60,6 +60,12 @@
 \usepackage[acronym]{glossaries}
 \usepackage{graphicx}
 
+\usepackage[hyphens]{url}            % Improves URL line breaking
+\usepackage[hidelinks]{hyperref}     % Optional: disables colored boxes/links
+\usepackage{etoolbox}
+\appto\UrlBreaks{\do\_\do\/}         % Allow breaks at _ and /
+
+
 %% ========================================================================
 %%%% MISC self-defined commands and settings
 %% ========================================================================

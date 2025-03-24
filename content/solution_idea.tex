@@ -7,11 +7,11 @@ The core idea is to perform image processing locally on each unit, thereby elimi
 % Responsible: Lukas Krahbichler
 
 \subsection{Camera}
-The selected camera must be compatible with the chosen single-board computer. A 4K camera is proposed, as higher resolution theoretically extends the effective range of tracking. This choice balances precision and affordability, ensuring the system's effectiveness without unnecessary costs.
+The selected camera must be compatible with the chosen single-board computer. A 4K camera is proposed, as a higher resolution theoretically extends the effective range of tracking. This choice balances precision and affordability, ensuring the system's effectiveness without unnecessary costs.
 % Responsible: Lukas Krahbichler
 
 \subsection{Display}
-The primary station will include a display for visualizing tracked drone data. The visualization is one of the system's primary goals and will be developed as part of the programming section. The parameters for the display, such as resolution (Full HD) and size (8 to 12 inches), are secondary considerations compared to compatibility and affordability. To reduce costs, the display will only be included in the primary station, ensuring that it provides sufficient functionality for monitoring without adding unnecessary expenses.
+The primary station will include a display for visualizing tracked drone data. The graphical user interface (GUI) is one of the system's primary goals and will be developed as part of the programming section. The parameters for the display, such as resolution (Full HD) and size (8 to 12 inches), are secondary considerations compared to compatibility and affordability. To reduce costs, the display will only be included in the primary station, ensuring that it provides sufficient functionality for monitoring without adding unnecessary expenses.
 % Responsible: Lukas Krahbichler
 
 \subsection{Power Supply}
@@ -23,7 +23,7 @@ The idea is to implement local radio communication as the primary data transfer 
 % Responsible: Lukas Krahbichler
 
 \subsection{Calibration}
-Calibration determines the relative positions and orientations of the ground stations, essential for accurate \acrshort{3d} drone tracking. Unlike competitors who use \acrshort{gnss} with \acrshort{rtk}, our system aims to achieve similar precision through a more cost-effective and fully local approach. 
+Calibration determines the relative positions and rotations of the ground stations, essential for accurate \acrshort{3d} drone tracking. Unlike competitors who use \acrshort{gnss} with \acrshort{rtk}, our system aims to achieve similar precision through a more cost-effective and fully local approach. 
 
 The calibration hardware, integrated onto a custom \acrfull{pcb}, could include:
 \begin{itemize}
@@ -42,7 +42,7 @@ During calibration, approximate directions could be determined using the communi
 
 \section{Housing}
 
-The initial proposition of the housing focuses on following principles:
+The initial proposition of the housing focuses on the following principles:
 \begin{itemize}
 	\item Sturdiness
 	\item Size
@@ -83,5 +83,5 @@ Having already calculated the relative angles for each ground station, the indiv
 
 
 \subsection{3D Visualization}
-Operating independently from the tracking suite, the visualization system retrieves data through network sockets. It provides a comprehensive real-time display of all three ground stations and their respective cameras. When a target is detected, the system dynamically renders lines extending from each station to the target, visually representing the tracking process. Additionally, a sphere is displayed at the calculated target position, with its size indicating the accuracy of the estimation, ensuring clear situational awareness.
+Decoupled from the tracking logic, the visualization module retrieves positional data through network sockets. It provides a comprehensive real-time display of all three ground stations and their respective cameras. When a target is detected, the system dynamically renders lines extending from each station to the target, visually representing the tracking process. Additionally, a sphere is displayed at the calculated target position, with its size indicating the accuracy of the estimation, ensuring clear situational awareness.
 % Responsible: Prantl Niclas
