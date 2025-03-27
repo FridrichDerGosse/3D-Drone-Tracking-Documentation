@@ -14,7 +14,7 @@ Several single-board computers were evaluated for this project:
 	\item \textbf{Raspberry Pi 4 Model B (8 GB):} Well-supported but has less processing power for image processing compared to other options \cite{raspberry_pi_4b}.
 \end{itemize}
 
-The ArmSom Sige7 Basic \cite{armsom_sige7}, equipped with a Sige Active Cooling Kit \cite{armsom_sige_cooling_kit}, shown in Fig.~\ref{fig:armsomsige7}, was chosen for its adequate performance and cost-effectiveness. However, during development, issues arose: one of the three units failed to boot, and limited documentation and support made troubleshooting difficult. In hindsight, selecting a more widely adopted platform like NVIDIA \cite{nvidia_jetson_nano}, ASUS \cite{asus_tinkerboard_s}, or Raspberry Pi \cite{raspberry_pi_4b} would have offered greater reliability and community support.
+The ArmSom Sige7 Basic \cite{armsom_sige7}, equipped with a Sige Active Cooling Kit \cite{armsom_sige_cooling_kit}, as shown in Fig.~\ref{fig:armsomsige7}, was chosen for its adequate performance and cost-effectiveness. However, during development, issues arose: one of the three units failed to boot, and limited documentation and support made troubleshooting difficult. In hindsight, selecting a more widely adopted platform like NVIDIA \cite{nvidia_jetson_nano}, ASUS \cite{asus_tinkerboard_s}, or Raspberry Pi \cite{raspberry_pi_4b} would have offered greater reliability and community support.
 
 In the end, this hardware failure was one of the main reasons the project was not fully completed, along with time constraints that prevented further troubleshooting or contacting the manufacturer, and the high costs associated with hardware replacement.
 
@@ -22,7 +22,6 @@ In the end, this hardware failure was one of the main reasons the project was no
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/armsom_sige7}
 	\caption{An ArmSom Sige7 Basic, equipped with a Sige Active Cooling Kit, mounted in a secondary station}
-	\source{Own photo}
 	\label{fig:armsomsige7}
 \end{figure}
 
@@ -30,13 +29,12 @@ For heat management, a Noctua NF-A8 5V PWM fan will be integrated into the stati
 
 \subsection{Camera}
 
-The camera module chosen is ArmSom's 4K model \cite{armsom_camera_module}, shown in Fig.~\ref{fig:armsomcamera}, specifically designed for seamless integration with the ArmSom Sige7 \cite{armsom_sige7}. This ensured full hardware compatibility and eliminated potential issues with third-party components. The module was selected for its high resolution of 4K, which allows for better tracking accuracy at greater distances. However, during testing, the camera initially produced very dark images. This was traced back to a driver issue, which was quickly resolved with support from the manufacturer.
+The camera module chosen is ArmSom's 4K model \cite{armsom_camera_module}, as shown in Fig.~\ref{fig:armsomcamera}, specifically designed for seamless integration with the ArmSom Sige7 \cite{armsom_sige7}. This ensured full hardware compatibility and eliminated potential issues with third-party components. The module was selected for its high resolution of 4K, which allows for better tracking accuracy at greater distances. However, during testing, the camera initially produced very dark images. This was traced back to a driver issue, which was quickly resolved with support from the manufacturer.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/armsom_camera}
 	\caption{ArmSom's 4K camera integrated into the finalized secondary station}
-	\source{Own photo}
 	\label{fig:armsomcamera}
 \end{figure}
 
@@ -48,16 +46,15 @@ Initially, ArmSom's 10.1-inch Full HD display \cite{armsom_display} was integrat
 
 The chosen power supply was a PD 100 W, 20,000 mAh power bank from POWERADD PRO \cite{poweradd_pro_powerbank} with three \acrfull{usb} ports. This model met the project's technical requirements as follows:
 \begin{itemize}
-	\item Its two USB-C ports support USB Power Delivery (USB-PD), which is essential for powering the ArmSom Sige7 \cite{armsom_sige7}. The ArmSom is connected to the top-left port, as shown in \autoref{fig:powerbank}.
-	\item Its 100W output ensures compatibility with all connected components, including the \acrshort{pcb}. The \acrshort{pcb} is connected to the USB-A port at the bottom left in \autoref{fig:powerbank}.
-	\item It includes three ports, enabling simultaneous connections for the ArmSom board, the \acrshort{pcb}, and charging functionality via the unused USB-C port at the top right in \autoref{fig:powerbank}.
+	\item Its two USB-C ports support USB Power Delivery (USB-PD), which is essential for powering the ArmSom Sige7 \cite{armsom_sige7}. The ArmSom is connected to the top-left port, as shown in Fig.~\ref{fig:powerbank}.
+	\item Its 100W output ensures compatibility with all connected components, including the \acrshort{pcb}. The \acrshort{pcb} is connected to the USB-A port at the bottom left, as shown in Fig.~\ref{fig:powerbank}.
+	\item It includes three ports, enabling simultaneous connections for the ArmSom board, the \acrshort{pcb}, and charging functionality via the unused USB-C port at the top right, as shown in Fig.~\ref{fig:powerbank}.
 \end{itemize}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/powerbank}
 	\caption{Power bank integrated into the finalized secondary station}
-	\source{Own photo}
 	\label{fig:powerbank}
 \end{figure}
 
@@ -67,9 +64,9 @@ Additionally, with this setup, the station has two start buttons - one for the p
 
 \subsection{Data Transfer}
 
-Initially, the NRF24L01 \cite{nRF24L01} modules with \acrshort{pcb} antennas, shown in Fig.~\ref{fig:oldantenna}, were integrated directly onto the \acrshort{pcb} to enable local radio communication between stations. However, these modules proved unreliable in the required 3-node mesh system, frequently failing to maintain a stable communication.
+Initially, the NRF24L01 \cite{nRF24L01} modules with \acrshort{pcb} antennas, as shown in Fig.~\ref{fig:oldantenna}, were integrated directly onto the \acrshort{pcb} to enable local radio communication between stations. However, these modules proved unreliable in the required 3-node mesh system, frequently failing to maintain a stable communication.
 
-To resolve this, the system was upgraded to NRF24L01+ PA + LNA \cite{nRF24L01_plus} modules with external antennas, shown in Fig.~\ref{fig:newantenna}. This change improved signal strength but required modifications to the housing design to accommodate the larger modules. The \acrshort{pcb} remained unchanged due to the identical pinout, but the new modules were too large to be mounted directly. Instead, they had to be repositioned and connected via jumper cables.
+To resolve this, the system was upgraded to NRF24L01+ PA + LNA \cite{nRF24L01_plus} modules with external antennas, as shown in Fig.~\ref{fig:newantenna}. This change improved signal strength but required modifications to the housing design to accommodate the larger modules. The \acrshort{pcb} remained unchanged due to the identical pinout, but the new modules were too large to be mounted directly. Instead, they had to be repositioned and connected via jumper cables.
 
 During testing, the mesh network continued to exhibit failures or functioned only when as were placed in specific orientations. Further research indicated that the high transmission power of the new modules caused interference in close-range operation. Reducing the transmission power resolved these stability issues, allowing the modules to function reliably within the system.
 
@@ -79,7 +76,6 @@ During testing, the mesh network continued to exhibit failures or functioned onl
 		\centering
 		\includegraphics[width=\linewidth]{figures/old_antenna}
 		\caption{Secondary station with NRF24L01 modules with \acrshort{pcb} antennas}
-		\source{Own photo}
 		\label{fig:oldantenna}
 	\end{minipage}
 	\hfill
@@ -87,7 +83,6 @@ During testing, the mesh network continued to exhibit failures or functioned onl
 		\centering
 		\includegraphics[width=\linewidth]{figures/new_antenna}
 		\caption{NRF24L01+ PA + LNA \cite{nRF24L01_plus} modules with external antennas}
-		\source{Own photo}
 		\label{fig:newantenna}
 	\end{minipage}
 \end{figure}
@@ -99,13 +94,12 @@ The calibration hardware ensures precise alignment and positioning of the primar
 \subsubsection*{Components and Functionality}
 
 \paragraph{Rotatable Head (Pitch and Yaw Axes):}
-The system uses compact three 28BYJ-48 stepper motors controlled via ULN2003 drivers \cite{angeek_28byj_48}. The yaw axis stepper is visible below the gear, and the two pitch axis steppers are positioned on the left and right sides of the head, as shown in Fig.~\ref{fig:gearmechanisms}. Every station uses four end-switches from InduSKY \cite{indusky_microswitch}, configured in normally closed mode to detect faults like loose connections. The end-switches can be seen to the left and right of the yaw axis stepper and below the head in Fig.~\ref{fig:gearmechanisms}. Servos \cite{miuzei_servos} were initially considered but dismissed due to cost, size, and complexity.
+The system uses compact three 28BYJ-48 stepper motors controlled via ULN2003 drivers \cite{angeek_28byj_48}. The yaw axis stepper is visible below the gear, and the two pitch axis steppers are positioned on the left and right sides of the head, as shown in Fig.~\ref{fig:gearmechanisms}. Every station uses four end-switches from InduSKY \cite{indusky_microswitch}, configured in normally closed mode to detect faults like loose connections. The end-switches are to the left and right of the yaw axis stepper and below the head, as shown in Fig.~\ref{fig:gearmechanisms}. Servos \cite{miuzei_servos} were initially considered but dismissed due to cost, size, and complexity.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/gear_mechanisms}
 	\caption{Rotatable head with gear mechanisms of final housing version}
-	\source{Own photo}
 	\label{fig:gearmechanisms}
 \end{figure}
 
@@ -113,42 +107,39 @@ The system uses compact three 28BYJ-48 stepper motors controlled via ULN2003 dri
 
 Initially, we attempted to use a \textbf{9DoF sensor module} \citep{jwbl_dof_sensor} that integrated a 3-axis 12-bit accelerometer, a 3-axis earth magnet sensor, and a 3-axis 16-bit gyroscope. However, the gyroscope did not function at all, while the accelerometer and magnetometer failed to provide correct data. The earth magnet sensor, in particular, delivered inconsistent readings, fluctuating significantly between measurements and rendering it unreliable for absolute orientation.
 
-As a result, we switched to a \textbf{GY-521 gyroscope} \cite{azdelivery_gy_521}, which provides 6-axis data for tilt measurement and alignment correction. Additionally, a \textbf{GY-271 compass} \cite{azdelivery_gy_271} was initially included for absolute orientation but was later abandoned due to unreliable calibration and inconsistent results. The compass remains on the \acrshort{pcb}, as seen on Fig.~\ref{fig:solderedpcb} and \ref{fig:oldantenna}, but is not actively used in the system.
+As a result, we switched to a \textbf{GY-521 gyroscope} \cite{azdelivery_gy_521}, which provides 6-axis data for tilt measurement and alignment correction. Additionally, a \textbf{GY-271 compass} \cite{azdelivery_gy_271} was initially included for absolute orientation but was later abandoned due to unreliable calibration and inconsistent results. The compass remains on the \acrshort{pcb}, as shown in Fig.~\ref{fig:solderedpcb} and \ref{fig:oldantenna}, but is not actively used in the system.
 
 \paragraph{ToF Laser Module:}
-The primary station features a DFRobot Infrared Laser Distance Sensor \cite{dfrobot_ir_sensor} with a 5 centimeters to 80 meters range and millimeter-level accuracy. It is used for precise distance measurements and requires an unobstructed line of sight between the stations. Its integration into the head, positioned above the camera, is shown in Fig.~\ref{fig:headcloseup}.
+The primary station features a DFRobot Infrared Laser Distance Sensor \cite{dfrobot_ir_sensor} with a 5 centimeters to 80 meters range and millimeter-level accuracy. It is used for precise distance measurements and requires an unobstructed line of sight between the stations. Its integrated into the head, positioned above the camera, as shown in Fig.~\ref{fig:headcloseup}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/head_closeup}
 	\caption{Head of final primary station}
-	\source{Own photo}
 	\label{fig:headcloseup}
 \end{figure}
 
 \paragraph{Camera for Visual Alignment:}
-Each station’s 4K camera \cite{armsom_camera_module}, located below the \acrshort{tof} laser module as shown in Fig.~\ref{fig:headcloseup}, identifies and aligns with other stations during calibration. The cameras should track the bright orange secondary stations for positioning, replacing the originally planned but unreliable radio-based direction-finding approach with Long Range (LoRa) modules \cite{tecnoio_lora_modules}.
+Each station’s 4K camera \cite{armsom_camera_module}, located below the \acrshort{tof} laser module, as shown in Fig.~\ref{fig:headcloseup}, identifies and aligns with other stations during calibration. The cameras should track the bright orange secondary stations for positioning, replacing the originally planned but unreliable radio-based direction-finding approach with Long Range (LoRa) modules \cite{tecnoio_lora_modules}.
 
 \paragraph{\acrshort{pcb}:}
-The calibration system relies on a custom-designed \acrshort{pcb}, shown in Fig.~\ref{fig:solderedpcb} and \ref{fig:pcb}, to integrate various components necessary for precise positioning and alignment. The \acrshort{pcb} was designed using \textbf{Altium Designer 22.11.1} \cite{altium_designer_22}, with components sourced from \textbf{DigiKey} \cite{digikey} and the board itself manufactured by \textbf{JLCPCB} \cite{jlcpcb}. Assembly was completed both in the school’s workshop and at home.
+The calibration system relies on a custom-designed \acrshort{pcb}, as shown in Fig.~\ref{fig:solderedpcb} and \ref{fig:pcb}, to integrate various components necessary for precise positioning and alignment. The \acrshort{pcb} was designed using \textbf{Altium Designer 22.11.1} \cite{altium_designer_22}, with components sourced from \textbf{DigiKey} \cite{digikey} and the board itself manufactured by \textbf{JLCPCB} \cite{jlcpcb}. Assembly was completed both in the school’s workshop and at home.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/soldered_pcb}
 	\caption{Assembled and soldered \acrshort{pcb} with Arduino Nano \cite{arduino_nano_dfrobot} facing in the wrong direction}
-	\source{Own photo}
 	\label{fig:solderedpcb}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/pcb}
-	\caption{PCB integrated into the final secondary station with all connections except for the laser, which secondary stations do not have}
-	\source{Own photo}
+	\caption{PCB integrated into the final secondary station with all connections except for the laser \cite{dfrobot_ir_sensor}, which secondary stations do not have}
 	\label{fig:pcb}
 \end{figure}
 
-The \acrshort{pcb} incorporates an \textbf{Arduino Nano} by DFRobot \cite{arduino_nano_dfrobot} as the main microcontroller, as visible in Fig.~\ref{fig:solderedpcb} and \ref{fig:pcb}. However, during development, we encountered program storage limitations, restricting the complexity of the firmware. In hindsight, selecting a microcontroller with more program storage, such as the \textbf{Arduino Uno R3} \cite{arduino_uno_dfrobot}, would have provided more flexibility and might have prevented these constraints.
+The \acrshort{pcb} incorporates an \textbf{Arduino Nano} by DFRobot \cite{arduino_nano_dfrobot} as the main microcontroller, as shown in Fig.~\ref{fig:solderedpcb} and \ref{fig:pcb}. However, during development, we encountered program storage limitations, restricting the complexity of the firmware. In hindsight, selecting a microcontroller with more program storage, such as the \textbf{Arduino Uno R3} \cite{arduino_uno_dfrobot}, would have provided more flexibility and might have prevented these constraints.
 
 \textbf{Key Functions of the \acrshort{pcb}:}
 \begin{itemize}
@@ -160,8 +151,8 @@ The \acrshort{pcb} incorporates an \textbf{Arduino Nano} by DFRobot \cite{arduin
 
 \textbf{Issues Encountered During Development:}
 \begin{itemize}
-	\item The \textbf{\acrshort{usb} input connector} was never soldered, as the cable did not fit inside the housing. Instead, one red and one black wire were soldered directly to the board. In \autoref{fig:pcb}, they can be seen running from the back right of the PCB, around it, and down to the power bank at the front left.
-	\item The \textbf{Arduino orientation} in Altium was incorrect, causing the microcontroller to be mounted in the opposite direction than intended. As a result, cable management in the housing design had to be adjusted. This is visible in \autoref{fig:pcb}, where the microcontroller’s USB port faces right, whereas in the production documents it faces the opposite direction.
+	\item The \textbf{\acrshort{usb} input connector} was never soldered, as the cable did not fit inside the housing. Instead, one red and one black wire were soldered directly to the board. As shown in Fig.~\ref{fig:pcb}, they are running from the back right of the PCB, around it, and down to the power bank at the front left.
+	\item The \textbf{Arduino orientation} in Altium was incorrect, causing the microcontroller to be mounted in the opposite direction than intended. As a result, cable management in the housing design had to be adjusted. As shown in Fig.~\ref{fig:pcb}, the microcontroller’s USB port faces right, whereas in the production documents it faces the opposite direction.
 	\item The \textbf{LED on/off switching functionality} did not work as intended, requiring two additional manual connections to be made on each \acrshort{pcb}.
 	\item The \textbf{Communication between the Arduino Nano \cite{arduino_nano_dfrobot} and the ArmSom Sige7 \cite{armsom_sige7}} was initially planned via Inter-Integrated Circuit (I2C). However, this did not work as expected. After unsuccessful troubleshooting attempts, we switched to Universal Asynchronous Receiver Transmitter (UART) communication. This change caused issues with the camera, as both systems could not run simultaneously. Ultimately, we resolved this by using a direct \acrshort{usb} connection, running a cable from a \acrshort{usb}-A port on the ArmSom board to the Micro-\acrshort{usb} port on the Arduino Nano.
 \end{itemize}
@@ -174,13 +165,12 @@ While the calibration system was designed to reduce costs compared to \acrshort{
 \section{Housing}
 \subsection{First Version}  
 
-The initial housing design, shown in Fig.~\ref{fig:firsthousingversion}, was developed before all hardware components were physically available, relying exclusively on online specifications and measurements provided by the manufacturers. While this approach enabled early prototyping, it also introduced dimensional inaccuracies. One of the most notable issues was an incorrectly sized display cutout, which required significant adjustments and a complete reprint of the housing.  
+The initial housing design, as shown in Fig.~\ref{fig:firsthousingversion}, was developed before all hardware components were physically available, relying exclusively on online specifications and measurements provided by the manufacturers. While this approach enabled early prototyping, it also introduced dimensional inaccuracies. One of the most notable issues was an incorrectly sized display cutout, which required significant adjustments and a complete reprint of the housing.  
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/first_housing_version}
 	\caption{Rendering of first housing version}
-	\source{Own illustration}
 	\label{fig:firsthousingversion}
 \end{figure}
 
@@ -216,27 +206,25 @@ Building upon the insights gained from the first housing iteration, the second v
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/old_and_new_station_comparison}
 	\caption{Comparison between final (left) and first version (right)}
-	\source{Own picture}
 	\label{fig:oldandnewstationcomparison}
 \end{figure}
 
 \paragraph{Enhanced Modularity and Accessibility}  
-A major focus of the redesign was to improve modularity, simplifying both assembly and maintenance. The revised structure allows for more efficient disassembly, significantly reducing the time required for maintenance and hardware adjustments. Additionally, hardware accessibility was prioritized, ensuring that critical components could be reached without excessive disassembly. This approach is demonstrated by the partially disassembled station shown in Fig.~\ref{fig:openstation}.
+A major focus of the redesign was to improve modularity, simplifying both assembly and maintenance. The revised structure allows for more efficient disassembly, significantly reducing the time required for maintenance and hardware adjustments. Additionally, hardware accessibility was prioritized, ensuring that critical components could be reached without excessive disassembly. This approach is demonstrated by the partially disassembled station, as shown in Fig.~\ref{fig:openstation}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/open_station}
 	\caption{Partially disassembled secondary station}
-	\source{Own picture}
 	\label{fig:openstation}
 \end{figure}
 
 
 \paragraph{Compact and Optimized Design}
-One of the most impactful changes was the removal of the display, as shown in the comparison in Fig.~\ref{fig:oldandnewstationcomparison}, which had previously dictated the dimensions of the housing. This adjustment enabled a more compact and streamlined design, optimizing space utilization while maintaining full functionality. Despite these structural changes, the motor mechanism from the first version was retained, reducing development time and ensuring continuity in core functionalities.  
+One of the most impactful changes was the removal of the display, as shown in Fig.~\ref{fig:oldandnewstationcomparison}, which had previously dictated the dimensions of the housing. This adjustment enabled a more compact and streamlined design, optimizing space utilization while maintaining full functionality. Despite these structural changes, the motor mechanism from the first version was retained, reducing development time and ensuring continuity in core functionalities.  
 
 \paragraph{Redesigned Bottom Section}  
-The bottom section of the housing, which accommodates essential components such as the \acrshort{pcb}, computer, power bank, and cooling system, underwent a complete redesign. This revision, visible in Fig.~\ref{fig:oldandnewstationcomparison}, focused on improving organization, airflow, and ease of access to internal hardware, ensuring more efficient operation and maintenance.  
+The bottom section of the housing, which accommodates essential components such as the \acrshort{pcb}, computer, power bank, and cooling system, underwent a complete redesign. This revision, as shown in Fig.~\ref{fig:oldandnewstationcomparison}, focused on improving organization, airflow, and ease of access to internal hardware, ensuring more efficient operation and maintenance.  
 
 \paragraph{Integration of Threaded Inserts}  
 To enhance durability and improve the reliability of screw connections, threaded inserts were introduced. These additions provide several benefits:  
@@ -247,7 +235,7 @@ To enhance durability and improve the reliability of screw connections, threaded
 \end{itemize}  
 
 \paragraph{Yaw Motor Issue \& Gear System Upgrade}  
-During testing, the initial yaw motor was found to be underpowered, resulting in performance limitations. To address this issue, a gear system, as illustrated in Fig.~\ref{fig:gearmechanisms}, was implemented to increase torque, enabling smoother and more reliable movement. This upgrade ensured that the system could operate effectively under varying conditions without compromising precision or stability.  
+During testing, the initial yaw motor was found to be underpowered, resulting in performance limitations. To address this issue, a gear system, as shown in Fig.~\ref{fig:gearmechanisms}, was implemented to increase torque, enabling smoother and more reliable movement. This upgrade ensured that the system could operate effectively under varying conditions without compromising precision or stability.  
 
 \paragraph{Refinements to the Bottom Section}  
 Even after the major redesign, additional modifications were necessary to further optimize the housing’s performance and durability:  
@@ -260,13 +248,12 @@ Even after the major redesign, additional modifications were necessary to furthe
 	\item Redesigned power button mechanism for a more intuitive and reliable user interface.  
 \end{itemize}  
 
-By incorporating these refinements, the second housing version achieved a significant leap in reliability, ease of use, and long-term maintainability, making it better suited for real-world deployment. The three finalized stations are shown from the front and back in Figs.~\ref{fig:finalstationsfront} and \ref{fig:finalstationsback}.
+By incorporating these refinements, the second housing version achieved a significant leap in reliability, ease of use, and long-term maintainability, making it better suited for real-world deployment. The three finalized stations are shown from the front and back in Fig.~\ref{fig:finalstationsfront} and \ref{fig:finalstationsback}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/final_stations_front}
 	\caption{Front view of all three final stations: two secondary (orange) and one primary (black, center)}
-	\source{Own picture}
 	\label{fig:finalstationsfront}
 \end{figure}
 
@@ -274,7 +261,6 @@ By incorporating these refinements, the second housing version achieved a signif
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/final_stations_back}
 	\caption{Rear view of all three final stations showing fan outlets and head-mounted components}
-	\source{Own picture}
 	\label{fig:finalstationsback}
 \end{figure}
 
@@ -299,7 +285,7 @@ By leveraging the strengths of both materials at different development stages, t
 \section{Programming}
 \subsection{Development Environment}  
 
-To facilitate efficient and consistent development of the ArmSom codebase, a \textbf{custom development environment} was created. This environment builds upon and extends the previously developed system by French Bakery \cite{fb_dev_environment}, incorporating various improvements to enhance usability, maintainability, and cross-platform compatibility.  
+To facilitate efficient and consistent development of the ArmSom codebase, a \textbf{custom development environment} was created. This environment builds upon and extends the previously developed system by FrenchBakery \cite{fb_dev_environment}, incorporating various improvements to enhance usability, maintainability, and cross-platform compatibility.  
 
 \paragraph{Containerized Development Approach}  
 A \textbf{Debian-based development container} was employed to provide a standardized environment for \textbf{C++ development and cross-compilation}. By using containerization, all necessary dependencies, libraries, and toolchains are encapsulated within a controlled environment, ensuring that every developer operates under identical conditions, regardless of the underlying host system.  
@@ -388,11 +374,11 @@ The implementation of the camera tracking system progressed to the conceptual an
 
 \subsection{Data Transfer}\label{subsec:DataTransfer}
 
-\begin{wrapfigure}[31]{r}{0.5\textwidth}
+\begin{wrapfigure}[32]{r}{0.5\textwidth}
 	\centering
 	\vspace{-60pt} % adjust spacing as needed
 	\includegraphics[width=0.35\textwidth]{figures/SS_Protocol_Message}
-	\caption{Message Structure}
+	\caption{Message structure}
 	\source{Own illustration created with draw.io \cite{drawio}}
 	\label{fig:ssprotocolmessage}
 \end{wrapfigure}
@@ -512,7 +498,7 @@ The refined protocol structure enables the efficient transmission of tracking an
 	\centering
 	\hspace*{-1.5cm}
 	\includegraphics[width=220pt]{figures/SS_Protocol}
-	\caption{Simplified Network Protocol}
+	\caption{Simplified network protocol}
 	\source{Own illustration created with draw.io \cite{drawio}}
 	\label{fig:ssprotocol}
 \end{figure}
